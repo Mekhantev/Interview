@@ -77,11 +77,11 @@ def compress_string(s):
 
 def rotate(matrix):
     m = deepcopy(matrix)
-    n = len(m)
-    layers_number = n // 2
+    m_len = len(m)
+    layers_number = m_len // 2
     for layer in range(layers_number):
         first = layer
-        last = n - 1 - layer
+        last = m_len - 1 - layer
         for i in range(first, last):
             offset = i - first
             top = m[first][i]
@@ -94,6 +94,24 @@ def rotate(matrix):
             #top -> right
             m[i][last] = top
     return m
+
+
+def set_zeros(matrix):
+    m_height = len(matrix)
+    m_width = len(matrix[0])
+    coordinates = ()
+    for i in range(m_height):
+        for y in range(m_width):
+            if matrix[i][y] == 0:
+                coordinates = (i, y)
+    m = deepcopy(matrix)
+    for i in range(m_height):
+        for y in range(m_width):
+            if i == coordinates[0] or y == coordinates[1]:
+                m[i][y] = 0
+    return m
+
+
 
 
 
