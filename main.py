@@ -1,7 +1,7 @@
 import sys
 from functions import reverse
 
-__author__ = 'necro'
+__author__ = 'Dmitry Mekhantev'
 
 
 def main(args):

@@ -1,7 +1,7 @@
 from unittest import TestCase
-from functions import reverse, all_chars_single, binary_search, permutation, replace_spaces
+from functions import reverse, all_chars_single, binary_search, permutation, replace_spaces, compress_string
 
-__author__ = 'necro'
+__author__ = 'Dmitry Mekhantev'
 
 
 class TestFunctions(TestCase):
@@ -27,4 +27,8 @@ class TestFunctions(TestCase):
     def test_replace_spaces(self):
         result = replace_spaces('sds dwdw sdad')
         self.assertEqual(result, 'sds%20dwdw%20sdad')
+
+    def test_compress_string(self):
+        result = compress_string('aabbbcddeffff')
+        self.assertEqual(result, 'a2b3c1d2e1f4')
 

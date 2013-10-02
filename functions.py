@@ -1,4 +1,4 @@
-__author__ = 'necro'
+__author__ = 'Dmitry Mekhantev'
 
 
 def all_chars_single(s: str) -> bool:
@@ -47,6 +47,32 @@ def replace_spaces(s: str) -> str:
             chars.insert(index + 2, '0')
             y += 2
     return ''.join(chars)
+
+
+def compress_string(s):
+    chars = []
+    current_c = s[0]
+    i = 0
+
+    append_char = lambda c: (
+        chars.append(c),
+        chars.append(str(i)))
+
+    #def append_char(c):
+    #    chars.append(c)
+    #    chars.append(str(i))
+
+    for c in s:
+        if current_c == c:
+            i += 1
+        else:
+            append_char(current_c)
+            i = 1
+            current_c = c
+    append_char(current_c)
+    return ''.join(chars)
+
+
 
 
 
