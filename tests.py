@@ -1,5 +1,5 @@
 from unittest import TestCase
-from functions import reverse, all_chars_single, binary_search, permutation, replace_spaces, compress_string, rotate, set_zeros
+from functions import reverse, all_chars_single, binary_search, permutation, replace_spaces, compress_string, rotate, set_zeros, is_rotation
 
 __author__ = 'Dmitry Mekhantev'
 
@@ -54,4 +54,10 @@ class TestFunctions(TestCase):
                            [0, 0, 0, 0],
                            [22, 23, 0, 25]]
         self.assertEqual(set_zeros(matrix), expected_matrix)
+
+    def test_is_rotation(self):
+        b = is_rotation('abcde', 'cdeab')
+        self.assertEqual(b, True)
+        b = is_rotation('abcde', 'cdeba')
+        self.assertEqual(b, False)
 
