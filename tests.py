@@ -1,5 +1,5 @@
 from unittest import TestCase
-from functions import reverse, all_chars_single, binary_search, permutation, replace_spaces, compress_string
+from functions import reverse, all_chars_single, binary_search, permutation, replace_spaces, compress_string, rotate
 
 __author__ = 'Dmitry Mekhantev'
 
@@ -31,4 +31,16 @@ class TestFunctions(TestCase):
     def test_compress_string(self):
         result = compress_string('aabbbcddeffff')
         self.assertEqual(result, 'a2b3c1d2e1f4')
+
+    def test_rotate(self):
+        matrix = [[10, 11, 12, 13],
+                  [14, 15, 16, 17],
+                  [18, 19, 20, 21],
+                  [22, 23, 24, 25]]
+
+        expected_matrix = [[22, 18, 14, 10],
+                           [23, 19, 15, 11],
+                           [24, 20, 16, 12],
+                           [25, 21, 17, 13]]
+        self.assertEqual(rotate(matrix), expected_matrix)
 

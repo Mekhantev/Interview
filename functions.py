@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 __author__ = 'Dmitry Mekhantev'
 
 
@@ -71,6 +73,32 @@ def compress_string(s):
             current_c = c
     append_char(current_c)
     return ''.join(chars)
+
+
+def rotate(matrix):
+    m = deepcopy(matrix)
+    n = len(m)
+    layers_number = n // 2
+    for layer in range(layers_number):
+        first = layer
+        last = n - 1 - layer
+        for i in range(first, last):
+            offset = i - first
+            top = m[first][i]
+            #left -> top
+            m[first][i] = m[last - offset][first]
+            #bottom -> left
+            m[last - offset][first] = m[last][last - offset]
+            #right -> bottom
+            m[last][last - offset] = m[i][last]
+            #top -> right
+            m[i][last] = top
+    return m
+
+
+
+
+
 
 
 
