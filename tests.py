@@ -1,7 +1,7 @@
 from unittest import TestCase
 from functions import reverse, all_chars_single, binary_search, permutation, \
     replace_spaces, compress_string, rotate, set_zeros, is_rotation
-from structures import delete_dups, Node
+from structures import delete_dups, make_linked_list, get_from_end
 
 __author__ = 'Dmitry Mekhantev'
 
@@ -66,18 +66,16 @@ class TestFunctions(TestCase):
 
 class TestStructures(TestCase):
     def test_delete_dups(self):
-        def make_linked_list(l) -> Node:
-            first_node = Node(l[0])
-            previous_node = first_node
-            for i in l[1:len(l)]:
-                previous_node.next_node = Node(i)
-                previous_node = previous_node.next_node
-            return first_node
-
         source_linked_list = make_linked_list([2, 1, 3, 2, 7, 6, 3, 5, 1, 9])
         expected_linked_list = make_linked_list([2, 1, 3, 7, 6, 5, 9])
         result = delete_dups(source_linked_list)
         self.assertEqual(expected_linked_list, result)
+
+    def test_get_from_end(self):
+        source_linked_list = make_linked_list([2, 1, 3, 2, 7, 6, 3, 5, 1, 9])
+        result = get_from_end(source_linked_list, 4)
+        self.assertEqual(6, result.data)
+
 
 
 
