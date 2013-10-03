@@ -49,3 +49,9 @@ def get_from_end(first_node: Node, k: 'Index from the end of list') -> Node:
     return n
 
 
+def delete_node(node: Node) -> Node:
+    node.data = node.next_node.data
+    node.next_node = node.next_node.next_node
+    return node
+
+
