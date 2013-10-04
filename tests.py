@@ -81,7 +81,7 @@ class TestStructures(TestCase):
         source_linked_list = make_linked_list([2, 1, 3, 2, 7, 6, 3, 5, 1, 9])
         expected_linked_list = make_linked_list([2, 1, 3, 7, 6, 3, 5, 1, 9])
         #delete [3] element
-        delete_node(source_linked_list.next_node.next_node.next_node)
+        delete_node(source_linked_list.next.next.next)
         self.assertEqual(expected_linked_list, source_linked_list)
 
     def test_partition(self):
@@ -106,9 +106,9 @@ class TestStructures(TestCase):
             if n.data == beginning_value:
                 loop_beginning = n
             if n.data == 9:
-                n.next_node = loop_beginning
+                n.next = loop_beginning
                 break
-            n = n.next_node
+            n = n.next
         result = get_loop_beginning(source_linked_list)
         self.assertEqual(beginning_value, result.data)
 
