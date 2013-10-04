@@ -1,7 +1,8 @@
 from unittest import TestCase
 from functions import reverse, all_chars_single, binary_search, permutation, \
     replace_spaces, compress_string, rotate, set_zeros, is_rotation
-from structures import delete_dups, make_linked_list, get_from_end, delete_node, partition, custom_sum
+from structures import delete_dups, make_linked_list, get_from_end, delete_node, \
+    partition, custom_sum, get_loop_beginning
 
 __author__ = 'Dmitry Mekhantev'
 
@@ -96,6 +97,20 @@ class TestStructures(TestCase):
         result = custom_sum(linked_list1, linked_list2)
         self.assertEqual(expected_linked_list, result)
 
+    def test_get_loop_beginning(self):
+        source_linked_list = make_linked_list([2, 1, 3, 5, 7, 6, 9])
+        loop_beginning = None
+        n = source_linked_list
+        beginning_value = 5
+        while n:
+            if n.data == beginning_value:
+                loop_beginning = n
+            if n.data == 9:
+                n.next_node = loop_beginning
+                break
+            n = n.next_node
+        result = get_loop_beginning(source_linked_list)
+        self.assertEqual(beginning_value, result.data)
 
 
 

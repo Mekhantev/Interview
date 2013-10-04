@@ -111,6 +111,22 @@ def custom_sum(first_node1: Node, first_node2: Node) -> Node:
     return first_result_node
 
 
+def get_loop_beginning(first_node: Node) -> Node:
+    slow = first_node
+    fast = first_node
+    while fast:
+        slow = slow.next_node
+        fast = fast.next_node.next_node
+        if slow.data == fast.data:
+            break
+    slow = first_node
+    while slow.data != fast.data:
+        slow = slow.next_node
+        fast = fast.next_node
+    return fast
+
+
+
 
 
 
