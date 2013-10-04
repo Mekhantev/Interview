@@ -84,3 +84,33 @@ def partition(first_node: Node, i: 'Node data value') -> Node:
     return first_left_node
 
 
+def custom_sum(first_node1: Node, first_node2: Node) -> Node:
+    first_result_node = None
+    last_result_node = None
+    n1 = first_node1.next_node
+    n2 = first_node2.next_node
+    carry = 0
+    while n1 or n2:
+        r = (n1.data if n1 else 0) + (n2.data if n2 else 0) + carry
+        node = Node(r % 10)
+        if first_result_node is None:
+            first_result_node = node
+        if last_result_node:
+            last_result_node.next_node = node
+        last_result_node = node
+        carry = r // 10
+        n1 = n1.next_node if n1 else None
+        n2 = n2.next_node if n2 else None
+    r = first_node1.data + first_node2.data + carry
+    node = Node(r if r < 10 else r // 10)
+    node.next_node = first_result_node
+    first_result_node = node
+    if r > 9:
+        node = Node(r % 10)
+        last_result_node.next_node = node
+    return first_result_node
+
+
+
+
+

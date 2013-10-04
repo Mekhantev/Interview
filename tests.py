@@ -1,7 +1,7 @@
 from unittest import TestCase
 from functions import reverse, all_chars_single, binary_search, permutation, \
     replace_spaces, compress_string, rotate, set_zeros, is_rotation
-from structures import delete_dups, make_linked_list, get_from_end, delete_node, partition
+from structures import delete_dups, make_linked_list, get_from_end, delete_node, partition, custom_sum
 
 __author__ = 'Dmitry Mekhantev'
 
@@ -88,6 +88,15 @@ class TestStructures(TestCase):
         expected_linked_list = make_linked_list([1, 2, 3, 4, 8, 5, 7, 3])
         result = partition(source_linked_list, 3)
         self.assertEqual(expected_linked_list, result)
+
+    def test_custom_sum(self):
+        linked_list1 = make_linked_list([8, 4, 8, 5])
+        linked_list2 = make_linked_list([5, 2, 3, 4])
+        expected_linked_list = make_linked_list([1, 6, 1, 0, 4])
+        result = custom_sum(linked_list1, linked_list2)
+        self.assertEqual(expected_linked_list, result)
+
+
 
 
 
