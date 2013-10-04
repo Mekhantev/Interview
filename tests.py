@@ -1,7 +1,7 @@
 from unittest import TestCase
 from functions import reverse, all_chars_single, binary_search, permutation, \
     replace_spaces, compress_string, rotate, set_zeros, is_rotation
-from structures import delete_dups, make_linked_list, get_from_end, delete_node
+from structures import delete_dups, make_linked_list, get_from_end, delete_node, partition
 
 __author__ = 'Dmitry Mekhantev'
 
@@ -82,6 +82,13 @@ class TestStructures(TestCase):
         #delete [3] element
         delete_node(source_linked_list.next_node.next_node.next_node)
         self.assertEqual(expected_linked_list, source_linked_list)
+
+    def test_partition(self):
+        source_linked_list = make_linked_list([1, 4, 8, 5, 3, 7, 2, 3])
+        expected_linked_list = make_linked_list([1, 2, 3, 4, 8, 5, 7, 3])
+        result = partition(source_linked_list, 3)
+        self.assertEqual(expected_linked_list, result)
+
 
 
 
