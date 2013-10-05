@@ -2,7 +2,7 @@ from unittest import TestCase
 from functions import reverse, all_chars_single, binary_search, permutation, \
     replace_spaces, compress_string, rotate, set_zeros, is_rotation
 from structures import delete_dups, make_linked_list, get_from_end, delete_node, \
-    partition, custom_sum, get_loop_beginning
+    partition, custom_sum, get_loop_beginning, is_palindrome
 
 __author__ = 'Dmitry Mekhantev'
 
@@ -111,6 +111,15 @@ class TestStructures(TestCase):
             n = n.next
         result = get_loop_beginning(source_linked_list)
         self.assertEqual(beginning_value, result.data)
+
+    def test_is_palindrome(self):
+        linked_list = make_linked_list([0, 1, 2, 3, 2, 1, 0])
+        b = is_palindrome(linked_list)
+        self.assertEqual(b, True)
+        linked_list = make_linked_list([0, 1, 2, 3, 4, 2, 1, 0])
+        b = is_palindrome(linked_list)
+        self.assertEqual(b, False)
+
 
 
 

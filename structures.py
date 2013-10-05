@@ -126,6 +126,31 @@ def get_loop_beginning(first_node: Node) -> Node:
     return fast
 
 
+def is_palindrome(first: Node) -> bool:
+    slow = first
+    fast = first
+    stack = []
+    while fast:
+        if fast.next:
+            if fast.next.next:
+                fast = fast.next.next
+            else:
+                return False
+        else:
+            break
+        stack.append(slow)
+        slow = slow.next
+    slow = slow.next
+    while slow:
+        if slow.data != stack.pop().data:
+            return False
+        slow = slow.next
+    return True
+
+
+
+
+
 
 
 
