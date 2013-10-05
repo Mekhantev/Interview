@@ -27,6 +27,8 @@ class TestFunctions(TestCase):
         self.assertEqual(b, True)
         b = permutation('bghjik', 'beghjk')
         self.assertEqual(b, False)
+        b = permutation('bghji', 'beghjk')
+        self.assertEqual(b, False)
 
     def test_replace_spaces(self):
         result = replace_spaces('sds dwdw sdad')
@@ -118,6 +120,9 @@ class TestStructures(TestCase):
         b = is_palindrome(linked_list)
         self.assertEqual(b, True)
         linked_list = make_linked_list([0, 1, 2, 3, 4, 2, 1, 0])
+        b = is_palindrome(linked_list)
+        self.assertEqual(b, False)
+        linked_list = make_linked_list([0, 1, 2, 3, 6, 1, 0])
         b = is_palindrome(linked_list)
         self.assertEqual(b, False)
 
