@@ -1,7 +1,7 @@
 from unittest import TestCase
 from functions import reverse, all_chars_single, binary_search, permutation, \
     replace_spaces, compress_string, rotate, set_zeros, is_rotation
-from stack import CustomStack
+from stack import CustomStack, Stack
 from structures import delete_dups, make_linked_list, get_from_end, delete_node, \
     partition, custom_sum, get_loop_beginning, is_palindrome
 
@@ -150,6 +150,53 @@ class TestStack(TestCase):
         for i in range(3):
             st.push(2, 0)
         self.assertRaises(Exception, st.push, 2, 0)
+
+    def test_push(self):
+        stack = Stack()
+        for i in range(10):
+            stack.push(i)
+        self.assertEqual(stack.buffer, [i for i in range(10)])
+
+    def test_pop(self):
+        stack = Stack()
+        for i in range(5):
+            stack.push(i)
+        for i in range(4, -1, -1):
+            self.assertEqual(stack.pop(), i)
+        self.assertRaises(Exception, stack.pop)
+
+    def test_peek(self):
+        stack = Stack()
+        for i in range(5):
+            stack.push(i)
+        self.assertEqual(stack.peek(), 4)
+        for i in range(4, -1, -1):
+            self.assertEqual(stack.pop(), i)
+        self.assertRaises(Exception, stack.peek)
+
+    def test_min(self):
+        stack = Stack()
+        for i in (2, 4, 5):
+            stack.push(i)
+        self.assertEqual(stack.min(), 2)
+        stack.push(1)
+        self.assertEqual(stack.min(), 1)
+        for i in range(4):
+            stack.pop()
+        self.assertRaises(Exception, stack.min)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
