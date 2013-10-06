@@ -132,7 +132,7 @@ class TestFixedTripleStack(TestCase):
         stack = FixedTripleStack()
         values = ((0, 1, 2, 3, 2, 3),
                   (2, 8, 6, 9, 7, 2, 7),
-                  (9, 2, 3, 1, 5, 6))
+                  (9, 2, 3, 1, 5, 6, 2, 4, 1, 5))
         for i, t in enumerate(values):
             for y in t:
                 stack.push(i, y)
@@ -140,6 +140,7 @@ class TestFixedTripleStack(TestCase):
         for i in range(4):
             stack.pop(1)
         self.assertEqual(stack.pop(1), 6)
+        self.assertRaises(Exception, stack.push, 2, 1)
 
     def test_pop(self):
         stack = FixedTripleStack()

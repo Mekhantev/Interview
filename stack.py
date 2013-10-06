@@ -49,7 +49,7 @@ class FixedTripleStack:
         self.pointers[stack_num] += 1
 
     def pop(self, stack_num):
-        if self.pointers[stack_num] == 0:
+        if self.is_empty(stack_num):
             raise Exception('Stack is empty')
         index = self.stack_size * stack_num + self.pointers[stack_num] - 1
         value = self.buffer[index]
@@ -58,7 +58,7 @@ class FixedTripleStack:
         return value
 
     def peek(self, stack_num):
-        if self.pointers[stack_num] == 0:
+        if self.is_empty(stack_num):
             raise Exception('Stack is empty')
         index = self.stack_size * stack_num + self.pointers[stack_num] - 1
         return self.buffer[index]
