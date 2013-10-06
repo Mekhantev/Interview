@@ -4,9 +4,8 @@ __author__ = 'Dmitry Mekhantev'
 
 
 class Node():
-    next = None
-
     def __init__(self, data):
+        self.next = None
         self.data = data
 
     def __eq__(self, other):
