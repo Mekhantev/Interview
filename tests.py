@@ -1,7 +1,7 @@
 from unittest import TestCase
 from functions import reverse, all_chars_single, binary_search, permutation, \
     replace_spaces, compress_string, rotate, set_zeros, is_rotation
-from stack import CustomStack, Stack
+from stack import FixedTripleStack, Stack
 from structures import delete_dups, make_linked_list, get_from_end, delete_node, \
     partition, custom_sum, get_loop_beginning, is_palindrome
 
@@ -127,30 +127,48 @@ class TestStructures(TestCase):
         self.assertEqual(b, False)
 
 
-class TestStack(TestCase):
-    def test_custom_stack(self):
-        st = CustomStack()
+class TestFixedTripleStack(TestCase):
+    def test_push(self):
+        stack = FixedTripleStack()
         values = ((0, 1, 2, 3, 2, 3),
                   (2, 8, 6, 9, 7, 2, 7),
                   (9, 2, 3, 1, 5, 6))
         for i, t in enumerate(values):
             for y in t:
-                st.push(i, y)
+                stack.push(i, y)
+        self.assertEqual(stack.pop(0), 3)
+        for i in range(4):
+            stack.pop(1)
+        self.assertEqual(stack.pop(1), 6)
 
-        self.assertEqual(3, st.pop(0))
-        self.assertEqual(2, st.peek(0))
-
+    def test_pop(self):
+        stack = FixedTripleStack()
+        values = ((0, 1, 2, 3, 2, 3),
+                  (2, 8, 6, 9, 7, 2, 7),
+                  (9, 2, 3, 1, 5, 6))
+        for i, t in enumerate(values):
+            for y in t:
+                stack.push(i, y)
+        self.assertEqual(stack.pop(2), 6)
         for i in range(7):
-            st.pop(1)
+            stack.pop(1)
+        self.assertRaises(Exception, stack.pop, 1)
 
-        self.assertRaises(Exception, st.pop, 1)
-        self.assertRaises(Exception, st.peek, 1)
-        self.assertEqual(st.is_empty(1), True)
+    def test_peek(self):
+        stack = FixedTripleStack()
+        values = ((0, 1, 2, 3, 2, 3),
+                  (2, 8, 6, 9, 7, 2, 7),
+                  (9, 2, 3, 1, 5, 6))
+        for i, t in enumerate(values):
+            for y in t:
+                stack.push(i, y)
+        self.assertEqual(stack.peek(0), 3)
+        for i in range(6):
+            stack.pop(2)
+        self.assertRaises(Exception, stack.peek, 2)
 
-        for i in range(3):
-            st.push(2, 0)
-        self.assertRaises(Exception, st.push, 2, 0)
 
+class TestStack(TestCase):
     def test_push(self):
         stack = Stack()
         for i in range(10):

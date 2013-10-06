@@ -32,7 +32,7 @@ class Stack:
         return len(self.buffer) == 0
 
 
-class CustomStack:
+class FixedTripleStack:
     stack_size = 10
     buffer = []
     pointers = [0, 0, 0]
