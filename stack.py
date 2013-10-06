@@ -2,8 +2,9 @@ __author__ = 'Dmitry Mekhantev'
 
 
 class Stack:
-    buffer = []
-    min_buffer = []
+    def __init__(self):
+        self.buffer = []
+        self.min_buffer = []
 
     def push(self, i):
         if self.is_empty() or i < self.min_buffer[-1]:
