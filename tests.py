@@ -1,15 +1,15 @@
 from unittest import TestCase
-from functions import reverse, all_chars_single, binary_search, permutation, \
-    replace_spaces, compress_string, rotate, set_zeros, is_rotation
+from functions import binary_search, rotate, set_zeros
 import linked_list
 from stack import FixedTripleStack, Stack, SetOfStacks
+import string
 
 __author__ = 'Dmitry Mekhantev'
 
 
 class TestFunctions(TestCase):
     def test_reverse(self):
-        result = reverse('abcdefg')
+        result = string.reverse('abcdefg')
         self.assertEqual(result, 'gfedcba')
 
     def test_binary_search(self):
@@ -18,23 +18,23 @@ class TestFunctions(TestCase):
         self.assertEqual(result, 3)
 
     def test_all_chars_single(self):
-        self.assertEqual(all_chars_single('abdhs'), True)
-        self.assertEqual(all_chars_single('abdahs'), False)
+        self.assertEqual(string.all_chars_single('abdhs'), True)
+        self.assertEqual(string.all_chars_single('abdahs'), False)
 
     def test_permutation(self):
-        b = permutation('bghjk', 'bghjk')
+        b = string.permutation('bghjk', 'bghjk')
         self.assertEqual(b, True)
-        b = permutation('bghjik', 'beghjk')
+        b = string.permutation('bghjik', 'beghjk')
         self.assertEqual(b, False)
-        b = permutation('bghji', 'beghjk')
+        b = string.permutation('bghji', 'beghjk')
         self.assertEqual(b, False)
 
     def test_replace_spaces(self):
-        result = replace_spaces('sds dwdw sdad')
+        result = string.replace_spaces('sds dwdw sdad')
         self.assertEqual(result, 'sds%20dwdw%20sdad')
 
     def test_compress_string(self):
-        result = compress_string('aabbbcddeffff')
+        result = string.compress('aabbbcddeffff')
         self.assertEqual(result, 'a2b3c1d2e1f4')
 
     def test_rotate(self):
@@ -61,9 +61,9 @@ class TestFunctions(TestCase):
         self.assertEqual(set_zeros(matrix), expected_matrix)
 
     def test_is_rotation(self):
-        b = is_rotation('abcde', 'cdeab')
+        b = string.is_rotation('abcde', 'cdeab')
         self.assertEqual(b, True)
-        b = is_rotation('abcde', 'cdeba')
+        b = string.is_rotation('abcde', 'cdeba')
         self.assertEqual(b, False)
 
 
