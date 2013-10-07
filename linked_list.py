@@ -12,7 +12,7 @@ class Node():
         return self.data == other.data and self.next == other.next
 
 
-def make_linked_list(l) -> Node:
+def make(l) -> Node:
     first_node = Node(l[0])
     previous_node = first_node
     for i in l[1:len(l)]:
@@ -145,12 +145,3 @@ def is_palindrome(first: Node) -> bool:
             return False
         slow = slow.next
     return True
-
-
-
-
-
-
-
-
-
