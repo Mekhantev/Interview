@@ -1,6 +1,7 @@
 from unittest import TestCase
-from functions import binary_search, rotate, set_zeros
+from functions import binary_search
 import linked_list
+import matrix
 from stack import FixedTripleStack, Stack, SetOfStacks
 import string
 
@@ -38,7 +39,7 @@ class TestFunctions(TestCase):
         self.assertEqual(result, 'a2b3c1d2e1f4')
 
     def test_rotate(self):
-        matrix = [[10, 11, 12, 13],
+        m = [[10, 11, 12, 13],
                   [14, 15, 16, 17],
                   [18, 19, 20, 21],
                   [22, 23, 24, 25]]
@@ -47,10 +48,10 @@ class TestFunctions(TestCase):
                            [23, 19, 15, 11],
                            [24, 20, 16, 12],
                            [25, 21, 17, 13]]
-        self.assertEqual(rotate(matrix), expected_matrix)
+        self.assertEqual(matrix.rotate(m), expected_matrix)
 
     def test_set_zeros(self):
-        matrix = [[10, 11, 12, 13],
+        m = [[10, 11, 12, 13],
                   [14, 15, 16, 17],
                   [18, 19, 0, 21],
                   [22, 23, 24, 25]]
@@ -58,7 +59,7 @@ class TestFunctions(TestCase):
                            [14, 15, 0, 17],
                            [0, 0, 0, 0],
                            [22, 23, 0, 25]]
-        self.assertEqual(set_zeros(matrix), expected_matrix)
+        self.assertEqual(matrix.set_zeros(m), expected_matrix)
 
     def test_is_rotation(self):
         b = string.is_rotation('abcde', 'cdeab')
