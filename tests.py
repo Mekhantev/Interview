@@ -1,5 +1,5 @@
 from unittest import TestCase
-from array import binary_search
+import arr
 import linked_list
 import matrix
 from stack import FixedTripleStack, Stack, SetOfStacks
@@ -8,15 +8,10 @@ import string
 __author__ = 'Dmitry Mekhantev'
 
 
-class TestFunctions(TestCase):
+class TestString(TestCase):
     def test_reverse(self):
         result = string.reverse('abcdefg')
         self.assertEqual(result, 'gfedcba')
-
-    def test_binary_search(self):
-        ints = [0, 3, 6, 7, 12, 22, 31, 49]
-        result = binary_search(ints, 7, 0, len(ints))
-        self.assertEqual(result, 3)
 
     def test_all_chars_single(self):
         self.assertEqual(string.all_chars_single('abdhs'), True)
@@ -38,6 +33,14 @@ class TestFunctions(TestCase):
         result = string.compress('aabbbcddeffff')
         self.assertEqual(result, 'a2b3c1d2e1f4')
 
+    def test_is_rotation(self):
+        b = string.is_rotation('abcde', 'cdeab')
+        self.assertEqual(b, True)
+        b = string.is_rotation('abcde', 'cdeba')
+        self.assertEqual(b, False)
+
+
+class TestMatrix(TestCase):
     def test_rotate(self):
         m = [[10, 11, 12, 13],
              [14, 15, 16, 17],
@@ -61,14 +64,15 @@ class TestFunctions(TestCase):
                            [22, 23, 0, 25]]
         self.assertEqual(matrix.set_zeros(m), expected_matrix)
 
-    def test_is_rotation(self):
-        b = string.is_rotation('abcde', 'cdeab')
-        self.assertEqual(b, True)
-        b = string.is_rotation('abcde', 'cdeba')
-        self.assertEqual(b, False)
+
+class TestArray(TestCase):
+    def test_binary_search(self):
+        ints = [0, 3, 6, 7, 12, 22, 31, 49]
+        result = arr.binary_search(ints, 7, 0, len(ints))
+        self.assertEqual(result, 3)
 
 
-class TestStructures(TestCase):
+class TestLinkedList(TestCase):
     def test_delete_dups(self):
         source_linked_list = linked_list.make([2, 1, 3, 2, 7, 6, 3, 5, 1, 9])
         expected_linked_list = linked_list.make([2, 1, 3, 7, 6, 5, 9])
@@ -229,26 +233,3 @@ class TestSetOfStacks(TestCase):
         self.assertEqual([stack.pop() for i in range(10)],
                          [i for i in range(9, -1, -1)])
         self.assertRaises(Exception, stack.peek)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
