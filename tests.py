@@ -1,5 +1,5 @@
 from unittest import TestCase
-from functions import binary_search
+from array import binary_search
 import linked_list
 import matrix
 from stack import FixedTripleStack, Stack, SetOfStacks
@@ -40,9 +40,9 @@ class TestFunctions(TestCase):
 
     def test_rotate(self):
         m = [[10, 11, 12, 13],
-                  [14, 15, 16, 17],
-                  [18, 19, 20, 21],
-                  [22, 23, 24, 25]]
+             [14, 15, 16, 17],
+             [18, 19, 20, 21],
+             [22, 23, 24, 25]]
 
         expected_matrix = [[22, 18, 14, 10],
                            [23, 19, 15, 11],
@@ -52,9 +52,9 @@ class TestFunctions(TestCase):
 
     def test_set_zeros(self):
         m = [[10, 11, 12, 13],
-                  [14, 15, 16, 17],
-                  [18, 19, 0, 21],
-                  [22, 23, 24, 25]]
+             [14, 15, 16, 17],
+             [18, 19, 0, 21],
+             [22, 23, 24, 25]]
         expected_matrix = [[10, 11, 0, 13],
                            [14, 15, 0, 17],
                            [0, 0, 0, 0],
