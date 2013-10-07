@@ -66,3 +66,45 @@ class FixedTripleStack:
 
     def is_empty(self, stack_num):
         return self.pointers[stack_num] == 0
+
+
+class SetOfStacks:
+    def __init__(self):
+        self.__stacks = []
+        self.__stack_size = 5
+
+    def __len__(self):
+        i = 0
+        for stack in self.__stacks:
+            i += len(stack)
+        return i
+
+    def __last_stack(self) -> list:
+        return self.__stacks[-1]
+
+    def push(self, value):
+        if len(self) == 0 or len(self.__last_stack()) == self.__stack_size:
+            stack = [value]
+            self.__stacks.append(stack)
+        else:
+            self.__last_stack().append(value)
+
+    def pop(self):
+        if self.is_empty():
+            raise Exception('Stack is empty')
+        value = self.__stacks[-1].pop()
+        if len(self.__stacks[-1]) == 0:
+            self.__stacks.pop()
+        return value
+
+    def peek(self):
+        if self.is_empty():
+            raise Exception('Stack is empty')
+        return self.__stacks[-1][-1]
+
+    def is_empty(self):
+        return len(self) == 0
+
+
+
+
