@@ -5,69 +5,69 @@ __author__ = 'Dmitry Mekhantev'
 
 class Stack:
     def __init__(self):
-        self.buffer = []
-        self.min_buffer = []
+        self.__buffer = []
+        self.__min_buffer = []
 
     def push(self, i):
-        if self.is_empty() or i < self.min_buffer[-1]:
-            self.min_buffer.append(i)
+        if self.is_empty() or i < self.__min_buffer[-1]:
+            self.__min_buffer.append(i)
         else:
-            self.min_buffer.append(self.min_buffer[-1])
-        self.buffer.append(i)
+            self.__min_buffer.append(self.__min_buffer[-1])
+        self.__buffer.append(i)
 
     def pop(self):
         if self.is_empty():
             raise Exception('Stack is empty')
-        self.min_buffer.pop()
-        return self.buffer.pop()
+        self.__min_buffer.pop()
+        return self.__buffer.pop()
 
     def peek(self):
         if self.is_empty():
             raise Exception('Stack is empty')
-        return self.buffer[-1]
+        return self.__buffer[-1]
 
     def min(self):
         if self.is_empty():
             raise Exception('Stack is empty')
-        return self.min_buffer[-1]
+        return self.__min_buffer[-1]
 
     def is_empty(self):
-        return len(self.buffer) == 0
+        return len(self.__buffer) == 0
 
 
 class FixedTripleStack:
     def __init__(self):
         #emulate array
-        self.stack_size = 10
-        self.buffer = []
-        self.pointers = [0, 0, 0]
-        for i in range(0, self.stack_size * 3):
-            self.buffer.append(None)
+        self.__stack_size = 10
+        self.__buffer = []
+        self.__pointers = [0, 0, 0]
+        for i in range(0, self.__stack_size * 3):
+            self.__buffer.append(None)
 
     def push(self, stack_num, value):
-        if self.pointers[stack_num] == self.stack_size:
+        if self.__pointers[stack_num] == self.__stack_size:
             raise Exception('Out of space')
-        index = self.stack_size * stack_num + self.pointers[stack_num]
-        self.buffer[index] = value
-        self.pointers[stack_num] += 1
+        index = self.__stack_size * stack_num + self.__pointers[stack_num]
+        self.__buffer[index] = value
+        self.__pointers[stack_num] += 1
 
     def pop(self, stack_num):
         if self.is_empty(stack_num):
             raise Exception('Stack is empty')
-        index = self.stack_size * stack_num + self.pointers[stack_num] - 1
-        value = self.buffer[index]
-        self.buffer[index] = None
-        self.pointers[stack_num] -= 1
+        index = self.__stack_size * stack_num + self.__pointers[stack_num] - 1
+        value = self.__buffer[index]
+        self.__buffer[index] = None
+        self.__pointers[stack_num] -= 1
         return value
 
     def peek(self, stack_num):
         if self.is_empty(stack_num):
             raise Exception('Stack is empty')
-        index = self.stack_size * stack_num + self.pointers[stack_num] - 1
-        return self.buffer[index]
+        index = self.__stack_size * stack_num + self.__pointers[stack_num] - 1
+        return self.__buffer[index]
 
     def is_empty(self, stack_num):
-        return self.pointers[stack_num] == 0
+        return self.__pointers[stack_num] == 0
 
 
 class SetOfStacks:

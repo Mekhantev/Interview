@@ -179,7 +179,8 @@ class TestStack(TestCase):
         stack = Stack()
         for i in range(10):
             stack.push(i)
-        self.assertEqual(stack.buffer, [i for i in range(10)])
+        for i in range(9,-1,-1):
+            self.assertEqual(stack.pop(), i)
 
     def test_pop(self):
         stack = Stack()
