@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 __author__ = 'Dmitry Mekhantev'
 
 
@@ -112,3 +114,15 @@ def move_disks(n: int, source: list, destination: list, buffer: list):
     move_disks(n - 1, source, buffer, destination)
     destination.append(source.pop())
     move_disks(n - 1, buffer, destination, source)
+
+
+def sort(stack: list) -> list:
+    stack = deepcopy(stack)
+    result = []
+    while len(stack) > 0:
+        i = stack.pop()
+        while len(result) > 0 and result[-1] > i:
+            stack.append(result.pop())
+        result.append(i)
+    return result
+

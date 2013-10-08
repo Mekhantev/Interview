@@ -3,7 +3,7 @@ import arr
 import linked_list
 import matrix
 from queue import StacksBasedQueue
-from stack import FixedTripleStack, Stack, SetOfStacks, move_disks
+from stack import FixedTripleStack, Stack, SetOfStacks, move_disks, sort
 import string
 
 __author__ = 'Dmitry Mekhantev'
@@ -269,3 +269,10 @@ class TestStacksBasedQueue(TestCase):
         for i in values:
             self.assertEqual(queue.dequeue(), i)
         self.assertRaises(Exception, queue.dequeue)
+
+
+class TestStackSort(TestCase):
+    def test_sort(self):
+        stack = [2, 4, 2, 9, 1, 7]
+        result = sort(stack)
+        self.assertEqual(result, sorted(stack))
