@@ -2,6 +2,7 @@ from unittest import TestCase
 import arr
 import linked_list
 import matrix
+from queue import StacksBasedQueue
 from stack import FixedTripleStack, Stack, SetOfStacks, move_disks
 import string
 
@@ -243,3 +244,28 @@ class TestHanoiTower(TestCase):
         buffer = []
         move_disks(len(source), source, destination, buffer)
         self.assertEqual(destination, expected_result)
+
+
+class TestStacksBasedQueue(TestCase):
+    def test_enqueue(self):
+        queue = StacksBasedQueue()
+        values = (1, 3, 2, 7, 8, 5, 9)
+        for i in values:
+            queue.enqueue(i)
+        for i in values:
+            self.assertEqual(queue.dequeue(), i)
+
+    def test_dequeue(self):
+        queue = StacksBasedQueue()
+        values = (1, 3, 2, 7, 8, 5, 9)
+        for i in values:
+            queue.enqueue(i)
+        for i in values[:-2]:
+            self.assertEqual(queue.dequeue(), i)
+        new_values = (10, 5)
+        values = values[-2:] + new_values
+        for i in new_values:
+            queue.enqueue(i)
+        for i in values:
+            self.assertEqual(queue.dequeue(), i)
+        self.assertRaises(Exception, queue.dequeue)
