@@ -2,7 +2,7 @@ from unittest import TestCase
 import arr
 import linked_list
 import matrix
-from stack import FixedTripleStack, Stack, SetOfStacks
+from stack import FixedTripleStack, Stack, SetOfStacks, move_disks
 import string
 
 __author__ = 'Dmitry Mekhantev'
@@ -233,3 +233,13 @@ class TestSetOfStacks(TestCase):
         self.assertEqual([stack.pop() for i in range(10)],
                          [i for i in range(9, -1, -1)])
         self.assertRaises(Exception, stack.peek)
+
+
+class TestHanoiTower(TestCase):
+    def test_move_disks(self):
+        expected_result = [1, 2, 5, 6, 8, 9, 12, 14]
+        source = list(expected_result)
+        destination = []
+        buffer = []
+        move_disks(len(source), source, destination, buffer)
+        self.assertEqual(destination, expected_result)

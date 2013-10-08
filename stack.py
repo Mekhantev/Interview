@@ -106,5 +106,9 @@ class SetOfStacks:
         return len(self) == 0
 
 
-
-
+def move_disks(n: int, source: list, destination: list, buffer: list):
+    if n == 0:
+        return
+    move_disks(n - 1, source, buffer, destination)
+    destination.append(source.pop())
+    move_disks(n - 1, buffer, destination, source)
