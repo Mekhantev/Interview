@@ -1,5 +1,6 @@
 from unittest import TestCase
 from structures import string, linked_list, array, matrix
+from structures.binary_tree import TreeNode, get_height, check_height
 from structures.my_queue import StacksBasedQueue, AnimalQueue, Cat, Dog
 from structures.stack import FixedTripleStack, Stack, SetOfStacks, move_disks, sort
 
@@ -328,4 +329,30 @@ class TestAnimalQueue(TestCase):
         for dog in dogs:
             self.assertEqual(dog, queue.dequeue_dog())
         self.assertRaises(Exception, queue.dequeue_dog)
+
+
+class TestBinaryTree(TestCase):
+    def test_get_height(self):
+        root = TreeNode()
+        root.left = TreeNode()
+        root.left.right = TreeNode()
+        root.left.right.left = TreeNode()
+        root.right = TreeNode()
+        self.assertEqual(4, get_height(root))
+
+    def test_check_height(self):
+        root = TreeNode()
+        root.left = TreeNode()
+        root.left.left = TreeNode()
+        root.left.left.left = TreeNode()
+        root.right = TreeNode()
+        self.assertEqual(-1, check_height(root))
+        root = TreeNode()
+        root.right = TreeNode()
+        root.right.right = TreeNode()
+        root.right.right.right = TreeNode()
+        root.left = TreeNode()
+        self.assertEqual(-1, check_height(root))
+
+
 
