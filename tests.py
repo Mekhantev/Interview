@@ -1,10 +1,8 @@
 from unittest import TestCase
-import arr
-import linked_list
-import matrix
-from queue import StacksBasedQueue
-from stack import FixedTripleStack, Stack, SetOfStacks, move_disks, sort
-import string
+from structures import string, linked_list, array, matrix
+from structures.queue import StacksBasedQueue
+from structures.stack import FixedTripleStack, Stack, SetOfStacks, move_disks, sort
+
 
 __author__ = 'Dmitry Mekhantev'
 
@@ -69,7 +67,7 @@ class TestMatrix(TestCase):
 class TestArray(TestCase):
     def test_binary_search(self):
         ints = [0, 3, 6, 7, 12, 22, 31, 49]
-        result = arr.binary_search(ints, 7, 0, len(ints))
+        result = array.binary_search(ints, 7, 0, len(ints))
         self.assertEqual(result, 3)
 
 
