@@ -1,6 +1,6 @@
 from unittest import TestCase
 from structures import string, linked_list, array, matrix
-from structures.queue import StacksBasedQueue
+from structures.my_queue import StacksBasedQueue, AnimalQueue, Cat, Dog
 from structures.stack import FixedTripleStack, Stack, SetOfStacks, move_disks, sort
 
 
@@ -177,7 +177,7 @@ class TestStack(TestCase):
         stack = Stack()
         for i in range(10):
             stack.push(i)
-        for i in range(9,-1,-1):
+        for i in range(9, -1, -1):
             self.assertEqual(stack.pop(), i)
 
     def test_pop(self):
@@ -275,3 +275,57 @@ class TestStackSort(TestCase):
         stack = [2, 4, 2, 9, 1, 7]
         result = sort(stack)
         self.assertEqual(result, sorted(stack))
+
+
+class TestAnimalQueue(TestCase):
+    def test_enqueue(self):
+        queue = AnimalQueue()
+        animals = [Cat(), Dog(), Dog(), Cat(), Cat()]
+        for animal in animals:
+            queue.enqueue(animal)
+        for animal in animals:
+            self.assertEqual(animal, queue.dequeue())
+
+    def test_dequeue(self):
+        queue = AnimalQueue()
+        animals = [Cat(), Dog(), Dog(), Cat(), Cat()]
+        for animal in animals:
+            queue.enqueue(animal)
+        for animal in animals:
+            self.assertEqual(animal, queue.dequeue())
+        self.assertRaises(Exception, queue.dequeue)
+
+    def test_dequeue_cat(self):
+        queue = AnimalQueue()
+        animals = [Cat(), Dog(), Dog(), Cat(), Cat()]
+        for animal in animals:
+            queue.enqueue(animal)
+        cats = (animal for animal in animals if type(animal) is Cat)
+        for cat in cats:
+            self.assertEqual(cat, queue.dequeue_cat())
+        self.assertRaises(Exception, queue.dequeue_cat)
+        queue = AnimalQueue()
+        cats = [Cat(), Cat()]
+        for cat in cats:
+            queue.enqueue(cat)
+        for cat in cats:
+            self.assertEqual(cat, queue.dequeue_cat())
+        self.assertRaises(Exception, queue.dequeue_cat)
+
+    def test_dequeue_dog(self):
+        queue = AnimalQueue()
+        animals = [Cat(), Dog(), Dog(), Cat(), Cat()]
+        for animal in animals:
+            queue.enqueue(animal)
+        dogs = (animal for animal in animals if type(animal) is Dog)
+        for dog in dogs:
+            self.assertEqual(dog, queue.dequeue_dog())
+        self.assertRaises(Exception, queue.dequeue_dog)
+        queue = AnimalQueue()
+        dogs = [Dog(), Dog()]
+        for dog in dogs:
+            queue.enqueue(dog)
+        for dog in dogs:
+            self.assertEqual(dog, queue.dequeue_dog())
+        self.assertRaises(Exception, queue.dequeue_dog)
+
