@@ -8,12 +8,9 @@ class TreeNode():
         self.value = value
 
     def __eq__(self, other):
-        return self.value == other.value
-        #if not other:
-        #    return False
-        #return (self.value == other.value
-        #        and self.right == other.right
-        #        and self.left == other.left)
+        return (self.value == other.value
+                and self.right == other.right
+                and self.left == other.left)
 
 
 def get_height(root) -> int:
@@ -49,8 +46,4 @@ def create_binary_search_tree(ints) -> TreeNode:
         return node
 
     return f(ints, 0, len(ints) - 1)
-
-
-
-
 

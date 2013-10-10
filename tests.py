@@ -362,7 +362,7 @@ class TestBinaryTree(TestCase):
         expected_tree.left = TreeNode(0)
         expected_tree.left.right = TreeNode(1)
         expected_tree.right = TreeNode(3)
-        expected_tree.right.tight = TreeNode(4)
+        expected_tree.right.right = TreeNode(4)
         self.assertEqual(tree, expected_tree)
 
 
@@ -378,8 +378,3 @@ class TestGraph(TestCase):
         node.links.extend((GraphNode(), GraphNode()))
         self.assertEqual(search(start, node.links[1]), True)
         self.assertEqual(search(start, GraphNode()), False)
-
-
-
-
-
