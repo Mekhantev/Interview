@@ -37,29 +37,29 @@ class AnimalQueue:
     def __init__(self):
         #linked list as data storage
         self._first_animal = None
-        self.__last_animal = None
+        self._last_animal = None
 
     def enqueue(self, animal: Animal):
-        if self._first_animal is None:
+        if not self._first_animal:
             self._first_animal = Node(animal)
-        elif self.__last_animal is None:
-            self.__last_animal = Node(animal)
-            self._first_animal.next = self.__last_animal
+        elif not self._last_animal:
+            self._last_animal = Node(animal)
+            self._first_animal.next = self._last_animal
         else:
-            self.__last_animal.next = Node(animal)
-            self.__last_animal = self.__last_animal.next
+            self._last_animal.next = Node(animal)
+            self._last_animal = self._last_animal.next
 
     def dequeue(self) -> Animal:
-        if self._first_animal is None:
+        if not self._first_animal:
             raise Exception('Queue is empty')
         animal = self._first_animal.data
         self._first_animal = self._first_animal.next
-        if self._first_animal is None:
-            self.__last_animal = None
+        if not self._first_animal:
+            self._last_animal = None
         return animal
 
-    def __dequeue_by_type(self, animal_type):
-        if self._first_animal is None:
+    def _dequeue_by_type(self, animal_type):
+        if not self._first_animal:
             raise Exception('Queue is empty')
         current = self._first_animal
         if type(current.data) is animal_type:
@@ -75,13 +75,13 @@ class AnimalQueue:
         return None
 
     def dequeue_cat(self) -> Cat:
-        cat = self.__dequeue_by_type(Cat)
-        if cat is None:
+        cat = self._dequeue_by_type(Cat)
+        if not cat:
             raise Exception('No cats in queue')
         return cat
 
     def dequeue_dog(self) -> Dog:
-        dog = self.__dequeue_by_type(Dog)
-        if dog is None:
+        dog = self._dequeue_by_type(Dog)
+        if not dog:
             raise Exception('No dogs in queue')
         return dog

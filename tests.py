@@ -387,7 +387,6 @@ class TestBinaryTree(TestCase):
         tree = create_binary_search_tree(ints)
         self.assertEqual(check_binary_search_tree(tree), True)
         tree.left.right.value = -1
-        check_binary_search_tree.last_value = None
         self.assertEqual(check_binary_search_tree(tree), False)
 
 
