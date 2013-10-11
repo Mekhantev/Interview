@@ -61,3 +61,21 @@ def create_lists_from_binary_tree(root: TreeNode) -> list:
             if parent.right:
                 current.append(parent.right)
     return lists
+
+
+def check_binary_search_tree(root: TreeNode) -> bool:
+    if not root:
+        return True
+    if not check_binary_search_tree(root.left):
+        return False
+
+    if (type(check_binary_search_tree.last_value) is int
+        and root.value < check_binary_search_tree.last_value):
+        return False
+    check_binary_search_tree.last_value = root.value
+    if not check_binary_search_tree(root.right):
+        return False
+    return True
+
+
+check_binary_search_tree.last_value = None

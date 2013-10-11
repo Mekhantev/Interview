@@ -1,6 +1,7 @@
 from unittest import TestCase
 from structures import string, linked_list, array, matrix
-from structures.binary_tree import TreeNode, get_height, check_height, create_binary_search_tree, create_lists_from_binary_tree
+from structures.binary_tree import TreeNode, get_height, check_height, create_binary_search_tree, \
+    create_lists_from_binary_tree, check_binary_search_tree
 from structures.graph import GraphNode, search
 from structures.my_queue import StacksBasedQueue, AnimalQueue, Cat, Dog
 from structures.stack import FixedTripleStack, Stack, SetOfStacks, move_disks, sort
@@ -380,6 +381,14 @@ class TestBinaryTree(TestCase):
         ]
         result = create_lists_from_binary_tree(tree)
         self.assertEqual(l, result)
+
+    def test_check_binary_search_tree(self):
+        ints = [i for i in range(5)]
+        tree = create_binary_search_tree(ints)
+        self.assertEqual(check_binary_search_tree(tree), True)
+        tree.left.right.value = -1
+        check_binary_search_tree.last_value = None
+        self.assertEqual(check_binary_search_tree(tree), False)
 
 
 class TestGraph(TestCase):
