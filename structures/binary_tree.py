@@ -47,3 +47,17 @@ def create_binary_search_tree(ints) -> TreeNode:
 
     return f(ints, 0, len(ints) - 1)
 
+
+def create_lists_from_binary_tree(root: TreeNode) -> list:
+    lists = []
+    current = [root]
+    while len(current) > 0:
+        lists.append(current)
+        parents = current
+        current = []
+        for parent in parents:
+            if parent.left:
+                current.append(parent.left)
+            if parent.right:
+                current.append(parent.right)
+    return lists
