@@ -1,7 +1,7 @@
 from unittest import TestCase
 from structures import string, linked_list, array, matrix
 from structures.binary_tree import TreeNode, get_height, check_height, create_binary_search_tree, \
-    create_lists_from_binary_tree, check_binary_search_tree, find_successor
+    create_lists_from_binary_tree, check_binary_search_tree, find_successor, find_common_ancestor
 from structures.graph import GraphNode, search
 from structures.my_queue import StacksBasedQueue, AnimalQueue, Cat, Dog
 from structures.stack import FixedTripleStack, Stack, SetOfStacks, move_disks, sort
@@ -396,6 +396,13 @@ class TestBinaryTree(TestCase):
         self.assertEqual(successor, root.right.right.left)
         successor = find_successor(root.left.right.left, root)
         self.assertEqual(successor, root.left.right)
+
+    def test_find_common_ancestor(self):
+        ints = [i for i in range(20)]
+        root = create_binary_search_tree(ints)
+        result = find_common_ancestor(root, root.right.left.left,
+                                      root.right.right.left.right)
+        self.assertEqual(result, root.right)
 
 
 class TestGraph(TestCase):

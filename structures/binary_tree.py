@@ -110,3 +110,19 @@ def find_successor_from_root(node: TreeNode, root: TreeNode) -> TreeNode:
         else:
             break
     return successor
+
+
+def find_common_ancestor(root: TreeNode, node1: TreeNode, node2: TreeNode):
+    if not root:
+        return None
+    if root == node1 or root == node2:
+        return root
+    else:
+        left = find_common_ancestor(root.left, node1, node2)
+        right = find_common_ancestor(root.right, node1, node2)
+        if left and right:
+            return root
+        elif left:
+            return left
+        else:
+            return right
