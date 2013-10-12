@@ -84,3 +84,29 @@ def _check_binary_search_tree(root: TreeNode) -> bool:
 
 
 _check_binary_search_tree.last_value = None
+
+
+def find_successor(node: TreeNode, root: TreeNode) -> TreeNode:
+    if node.right:
+        return find_left_most_child(node.right)
+    else:
+        return find_successor_from_root(node, root)
+
+
+def find_left_most_child(node: TreeNode) -> TreeNode:
+    while node.left:
+        node = node.left
+    return node
+
+
+def find_successor_from_root(node: TreeNode, root: TreeNode) -> TreeNode:
+    successor = None
+    while root:
+        if node.value < root.value:
+            successor = root
+            root = root.left
+        elif node.value > root.value:
+            root = root.right
+        else:
+            break
+    return successor

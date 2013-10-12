@@ -1,7 +1,7 @@
 from unittest import TestCase
 from structures import string, linked_list, array, matrix
 from structures.binary_tree import TreeNode, get_height, check_height, create_binary_search_tree, \
-    create_lists_from_binary_tree, check_binary_search_tree
+    create_lists_from_binary_tree, check_binary_search_tree, find_successor
 from structures.graph import GraphNode, search
 from structures.my_queue import StacksBasedQueue, AnimalQueue, Cat, Dog
 from structures.stack import FixedTripleStack, Stack, SetOfStacks, move_disks, sort
@@ -388,6 +388,14 @@ class TestBinaryTree(TestCase):
         self.assertEqual(check_binary_search_tree(tree), True)
         tree.left.right.value = -1
         self.assertEqual(check_binary_search_tree(tree), False)
+
+    def test_find_successor(self):
+        ints = [i for i in range(20)]
+        root = create_binary_search_tree(ints)
+        successor = find_successor(root.right, root)
+        self.assertEqual(successor, root.right.right.left)
+        successor = find_successor(root.left.right.left, root)
+        self.assertEqual(successor, root.left.right)
 
 
 class TestGraph(TestCase):
