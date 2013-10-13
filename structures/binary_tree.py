@@ -126,3 +126,15 @@ def find_common_ancestor(root: TreeNode, node1: TreeNode, node2: TreeNode):
             return left
         else:
             return right
+
+
+def contains_subtree(tree: TreeNode, subtree: TreeNode):
+    if not tree:
+        return False
+    if contains_subtree(tree.left, subtree):
+        return True
+    if tree == subtree:
+        return True
+    if contains_subtree(tree.right, subtree):
+        return True
+    return False
