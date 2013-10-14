@@ -422,6 +422,18 @@ class TestBinaryTree(TestCase):
         ]
         self.assertEqual(expected_result, result)
 
+    def test_find_path_by_sum(self):
+        ints = [i for i in range(20)]
+        root = create_binary_search_tree(ints)
+        result = find_path_by_sum(root, 34)
+        expected_result = [
+            root.left.right.right.right,
+            root.right.left
+        ]
+        self.assertEqual(expected_result, result)
+
+
+
 
 class TestGraph(TestCase):
     def test_search(self):

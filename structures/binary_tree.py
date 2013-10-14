@@ -158,3 +158,26 @@ def _find_sum(root: TreeNode, node: TreeNode, sum: int):
 
 
 _find_sum.result = None
+
+
+def find_path_by_sum(tree: TreeNode, sum: int):
+    _find_path_by_sum.result = []
+    _find_path_by_sum.values = []
+    _find_path_by_sum(tree, sum)
+    return _find_path_by_sum.result
+
+
+def _find_path_by_sum(node: TreeNode, sum_value: int):
+    if not node:
+        return
+    _find_path_by_sum.values.append(node.value)
+    if sum(_find_path_by_sum.values) == sum_value:
+        _find_path_by_sum.result.append(node)
+    _find_path_by_sum(node.left, sum_value)
+    _find_path_by_sum(node.right, sum_value)
+    _find_path_by_sum.values.pop()
+    return
+
+
+_find_path_by_sum.result = None
+_find_path_by_sum.values = None
