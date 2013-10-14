@@ -1,7 +1,6 @@
 from unittest import TestCase
 from structures import string, linked_list, array, matrix
-from structures.binary_tree import TreeNode, get_height, check_height, create_binary_search_tree, \
-    create_lists_from_binary_tree, check_binary_search_tree, find_successor, find_common_ancestor, contains_subtree
+from structures.binary_tree import *
 from structures.graph import GraphNode, search
 from structures.my_queue import StacksBasedQueue, AnimalQueue, Cat, Dog
 from structures.stack import FixedTripleStack, Stack, SetOfStacks, move_disks, sort
@@ -409,6 +408,19 @@ class TestBinaryTree(TestCase):
         tree = create_binary_search_tree(ints)
         b = contains_subtree(tree, tree.left.right.left)
         self.assertEqual(b, True)
+
+    def test_find_sum(self):
+        ints = [i for i in range(20)]
+        tree = create_binary_search_tree(ints)
+        tree.right.left.right.right.value = 1
+        tree.left.right.right.right.value = 1
+        result = find_sum(tree, 10)
+        expected_result = [
+            tree.left.left,
+            tree.right.left.right.right,
+            tree.left.right.right.right
+        ]
+        self.assertEqual(expected_result, result)
 
 
 class TestGraph(TestCase):

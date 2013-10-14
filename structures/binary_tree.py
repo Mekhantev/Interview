@@ -138,3 +138,23 @@ def contains_subtree(tree: TreeNode, subtree: TreeNode):
     if contains_subtree(tree.right, subtree):
         return True
     return False
+
+
+def find_sum(tree: TreeNode, sum: int):
+    _find_sum.result = []
+    _find_sum(tree, tree.left, sum)
+    _find_sum(tree, tree.right, sum)
+    return _find_sum.result if _find_sum.result else None
+
+
+def _find_sum(root: TreeNode, node: TreeNode, sum: int):
+    if not node:
+        return
+    _find_sum(root, node.left, sum)
+    if root.value + node.value == sum:
+        _find_sum.result.append(node)
+    _find_sum(root, node.right, sum)
+    return
+
+
+_find_sum.result = None
