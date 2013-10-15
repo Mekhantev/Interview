@@ -1,0 +1,18 @@
+from unittest import TestCase
+from structures.graph import *
+
+__author__ = 'Dmitry Mekhantev'
+
+
+class TestGraph(TestCase):
+    def test_search(self):
+        node = GraphNode()
+        start = node
+        node.links.extend((GraphNode(), GraphNode(), GraphNode()))
+        node.links[0].links.extend((GraphNode(), GraphNode()))
+        node.links[1].links.extend((GraphNode(), GraphNode(), GraphNode()))
+        node.links[2].links.extend((GraphNode(), GraphNode()))
+        node = node.links[2]
+        node.links.extend((GraphNode(), GraphNode()))
+        self.assertEqual(search(start, node.links[1]), True)
+        self.assertEqual(search(start, GraphNode()), False)
