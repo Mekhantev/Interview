@@ -1,9 +1,10 @@
 from abc import ABCMeta
+from enum import Enum
 
 __author__ = 'Dmitry Mekhantev'
 
 
-class Rank():
+class Rank(Enum):
     low = 0,
     normal = 1,
     high = 2

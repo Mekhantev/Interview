@@ -1,10 +1,11 @@
 from abc import ABCMeta
 from collections.abc import Iterable
+from enum import Enum
 
 __author__ = 'Dmitry Mekhantev'
 
 
-class Suit:
+class Suit(Enum):
     Club = 0,
     Diamond = 1,
     Heart = 2,
