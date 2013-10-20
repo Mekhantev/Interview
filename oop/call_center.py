@@ -1,5 +1,6 @@
 from abc import ABCMeta
 from enum import Enum
+from utils import Singleton
 
 __author__ = 'Dmitry Mekhantev'
 
@@ -8,15 +9,6 @@ class Rank(Enum):
     low = 0,
     normal = 1,
     high = 2
-
-
-class Singleton(type):
-    _instance = None
-
-    def __call__(cls, *args, **kwargs):
-        if cls._instance is None:
-            cls._instance = super(Singleton, cls).__call__(*args, **kwargs)
-        return cls._instance
 
 
 class Call():
