@@ -14,5 +14,5 @@ class TestGraph(TestCase):
         node.links[2].links.extend((GraphNode(), GraphNode()))
         node = node.links[2]
         node.links.extend((GraphNode(), GraphNode()))
-        self.assertEqual(search(start, node.links[1]), True)
-        self.assertEqual(search(start, GraphNode()), False)
+        self.assertTrue(search(start, node.links[1]))
+        self.assertFalse(search(start, GraphNode()))

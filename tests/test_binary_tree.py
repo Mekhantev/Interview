@@ -56,9 +56,9 @@ class TestBinaryTree(TestCase):
     def test_check_binary_search_tree(self):
         ints = [i for i in range(5)]
         tree = create_binary_search_tree(ints)
-        self.assertEqual(check_binary_search_tree(tree), True)
+        self.assertTrue(check_binary_search_tree(tree))
         tree.left.right.value = -1
-        self.assertEqual(check_binary_search_tree(tree), False)
+        self.assertFalse(check_binary_search_tree(tree))
 
     def test_find_successor(self):
         ints = [i for i in range(20)]
@@ -79,7 +79,7 @@ class TestBinaryTree(TestCase):
         ints = [i for i in range(20)]
         tree = create_binary_search_tree(ints)
         b = contains_subtree(tree, tree.left.right.left)
-        self.assertEqual(b, True)
+        self.assertTrue(b)
 
     def test_find_sum(self):
         ints = [i for i in range(20)]

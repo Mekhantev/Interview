@@ -10,16 +10,13 @@ class TestString(TestCase):
         self.assertEqual(result, 'gfedcba')
 
     def test_all_chars_single(self):
-        self.assertEqual(all_chars_single('abdhs'), True)
-        self.assertEqual(all_chars_single('abdahs'), False)
+        self.assertTrue(all_chars_single('abdhs'))
+        self.assertFalse(all_chars_single('abdahs'))
 
     def test_permutation(self):
-        b = permutation('bghjk', 'bghjk')
-        self.assertEqual(b, True)
-        b = permutation('bghjik', 'beghjk')
-        self.assertEqual(b, False)
-        b = permutation('bghji', 'beghjk')
-        self.assertEqual(b, False)
+        self.assertTrue(permutation('bghjk', 'bghjk'))
+        self.assertFalse(permutation('bghjik', 'beghjk'))
+        self.assertFalse(permutation('bghji', 'beghjk'))
 
     def test_replace_spaces(self):
         result = replace_spaces('sds dwdw sdad')
@@ -30,7 +27,5 @@ class TestString(TestCase):
         self.assertEqual(result, 'a2b3c1d2e1f4')
 
     def test_is_rotation(self):
-        b = is_rotation('abcde', 'cdeab')
-        self.assertEqual(b, True)
-        b = is_rotation('abcde', 'cdeba')
-        self.assertEqual(b, False)
+        self.assertTrue(is_rotation('abcde', 'cdeab'))
+        self.assertFalse(is_rotation('abcde', 'cdeba'))

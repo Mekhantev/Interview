@@ -53,11 +53,8 @@ class TestLinkedList(TestCase):
 
     def test_is_palindrome(self):
         l = make([0, 1, 2, 3, 2, 1, 0])
-        b = is_palindrome(l)
-        self.assertEqual(b, True)
+        self.assertTrue(is_palindrome(l))
         l = make([0, 1, 2, 3, 4, 2, 1, 0])
-        b = is_palindrome(l)
-        self.assertEqual(b, False)
+        self.assertFalse(is_palindrome(l))
         l = make([0, 1, 2, 3, 6, 1, 0])
-        b = is_palindrome(l)
-        self.assertEqual(b, False)
+        self.assertFalse(is_palindrome(l))

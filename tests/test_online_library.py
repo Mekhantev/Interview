@@ -49,5 +49,3 @@ class TestOnlineLibrary(TestCase):
         self.assertRaises(Exception, ol.get_book, user, author, title)
         user = ol.login(login, password)
         self.assertRaises(Exception, ol.get_book, user, 'a', title)
-
-

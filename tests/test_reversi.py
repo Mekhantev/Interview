@@ -14,9 +14,7 @@ class TestPiece(TestCase):
 class TestBoard(TestCase):
     def test_place_piece(self):
         board = Board(10, 10)
-
-    def test_flip_section(self):
-        board = Board(10, 10)
+        board.place_piece(5, 6, Color.black)
 
 
 class TestPlayer(TestCase):
