@@ -1,3 +1,5 @@
+from datetime import datetime
+
 __author__ = 'Dmitry Mekhantev'
 
 
@@ -5,6 +7,10 @@ def first(iterable):
     for item in iterable:
         return item
     raise ValueError('No satisfactory value found')
+
+
+def datetime_now_float() -> float:
+    return float(datetime.now().strftime('%s.%f'))
 
 
 class Singleton(type):
