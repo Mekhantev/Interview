@@ -10,7 +10,7 @@ class Edge(metaclass=ABCMeta):
         """ remove from coverage """
 
     def fits_with(self, edge) -> bool:
-        if (type(edge) is self.suitable_edge and
+        if (isinstance(edge, self.suitable_edge) and
                 self._image_fits(edge)):
             return True
         return False

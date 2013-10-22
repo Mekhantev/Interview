@@ -26,7 +26,7 @@ class Player(metaclass=ABCMeta):
         self.is_playing = False
 
     def can_play(self, storage: Storage):
-        return True if type(storage) is self._can_play_type else False
+        return True if isinstance(storage, self._can_play_type) else False
 
     def play(self) -> str:
         self.is_playing = True

@@ -74,8 +74,8 @@ def _check_binary_search_tree(root: TreeNode) -> bool:
     if not _check_binary_search_tree(root.left):
         return False
 
-    if (type(_check_binary_search_tree.last_value) is int
-        and root.value < _check_binary_search_tree.last_value):
+    if (isinstance(_check_binary_search_tree.last_value, int) and
+                root.value < _check_binary_search_tree.last_value):
         return False
     _check_binary_search_tree.last_value = root.value
     if not _check_binary_search_tree(root.right):

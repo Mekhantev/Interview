@@ -62,12 +62,12 @@ class AnimalQueue:
         if not self._first_animal:
             raise Exception('Queue is empty')
         current = self._first_animal
-        if type(current.data) is animal_type:
+        if isinstance(current.data, animal_type):
             self._first_animal = current.next
             return current.data
         previous = current
         while current is not None:
-            if type(current.data) is animal_type:
+            if isinstance(current.data, animal_type):
                 previous.next = current.next
                 return current.data
             previous = current

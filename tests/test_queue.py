@@ -27,7 +27,7 @@ class TestAnimalQueue(TestCase):
         animals = [Cat(), Dog(), Dog(), Cat(), Cat()]
         for animal in animals:
             queue.enqueue(animal)
-        cats = (animal for animal in animals if type(animal) is Cat)
+        cats = (animal for animal in animals if isinstance(animal, Cat))
         for cat in cats:
             self.assertEqual(cat, queue.dequeue_cat())
         self.assertRaises(Exception, queue.dequeue_cat)
@@ -44,7 +44,7 @@ class TestAnimalQueue(TestCase):
         animals = [Cat(), Dog(), Dog(), Cat(), Cat()]
         for animal in animals:
             queue.enqueue(animal)
-        dogs = (animal for animal in animals if type(animal) is Dog)
+        dogs = (animal for animal in animals if isinstance(animal, Dog))
         for dog in dogs:
             self.assertEqual(dog, queue.dequeue_dog())
         self.assertRaises(Exception, queue.dequeue_dog)
