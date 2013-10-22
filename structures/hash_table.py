@@ -43,4 +43,3 @@ class HashTable():
         for c in str(key):
             h = 101 * h + ord(c)
         return h % len(self._items)
-        #return len(str(k)) % len(self._items)
