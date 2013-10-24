@@ -1,3 +1,5 @@
+from collections.abc import Iterable
+
 __author__ = 'Dmitry Mekhantev'
 
 
@@ -22,13 +24,18 @@ def count_ways_dynamic(n, l: list):
 
 
 class Field():
-    def __init__(self, i=10):
+    def __init__(self, i=5, nonfree_points: Iterable=None):
         self._matrix = []
+        self._nonfree_points = []
+        self._nonfree_points.extend(nonfree_points)
         for _ in range(i):
             self._matrix.append([None for _ in range(i)])
 
-    def get_path(self, t: tuple, path: list):
+    def get_path(self, t: tuple, path: list, cache: dict):
         path.append(t)
+        #b = cache.get(t)
+        #if b is not None:
+        #    return b
         x = t[0]
         y = t[1]
         if x == 0 and y == 0:
@@ -36,13 +43,16 @@ class Field():
         next_p = (x - 1, y)
         b = False
         if x > 0 and self._is_free(next_p):
-            b = self.get_path(next_p, path)
+            b = self.get_path(next_p, path, cache)
         next_p = (x, y - 1)
         if not b and y > 0 and self._is_free(next_p):
-            b = self.get_path(next_p, path)
+            b = self.get_path(next_p, path, cache)
         #if not b:
         #    path.remove(t)
+        cache[t] = b
         return b
 
     def _is_free(self, t: tuple):
+        if t in self._nonfree_points:
+            return False
         return True

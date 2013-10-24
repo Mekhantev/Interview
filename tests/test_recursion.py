@@ -17,13 +17,19 @@ class TestRecursion(TestCase):
 
 class TestField(TestCase):
     def test_get_path(self):
-        f = Field()
+        f = Field(nonfree_points=((2, 4),))
         path = []
-        point = (7, 8)
-        expected_path = []
-        for i in range(0, point[0] + 1):
-            expected_path.append((point[0] - i, point[1]))
-        for i in range(1, point[1] + 1):
-            expected_path.append((0, point[1] - i))
-        self.assertTrue(f.get_path(point, path))
+        point = (4, 4)
+        expected_path = [
+            (4, 4),
+            (3, 4),
+            (3, 3),
+            (2, 3),
+            (1, 3),
+            (0, 3),
+            (0, 2),
+            (0, 1),
+            (0, 0)
+        ]
+        self.assertTrue(f.get_path(point, path, {}))
         self.assertEqual(path, expected_path)
