@@ -14,6 +14,11 @@ class TestRecursion(TestCase):
         ways = count_ways_dynamic(i, [None for _ in range(i + 1)])
         self.assertEqual(274, ways)
 
+    def test_find_magic_index(self):
+        ints = (-10, -5, -1, 2, 4, 6, 8, 10)
+        i = find_magic_index(ints, 0, len(ints) - 1)
+        self.assertEqual(i, 4)
+
 
 class TestField(TestCase):
     def test_get_path(self):

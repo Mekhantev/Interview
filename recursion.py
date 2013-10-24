@@ -47,7 +47,7 @@ class Field():
         next_p = (x, y - 1)
         if not b and y > 0 and self._is_free(next_p):
             b = self.get_path(next_p, path, cache)
-        #if not b:
+            #if not b:
         #    path.remove(t)
         cache[t] = b
         return b
@@ -56,3 +56,15 @@ class Field():
         if t in self._nonfree_points:
             return False
         return True
+
+
+def find_magic_index(ints: 'Sorted linear collection',
+                     left: int, right: int) -> int:
+    """Returns index if ints[index] == index"""
+    pos = (left + right) // 2
+    if ints[pos] == pos:
+        return pos
+    elif ints[pos] < pos:
+        return find_magic_index(ints, pos + 1, right)
+    else:
+        return find_magic_index(ints, left, pos - 1)
