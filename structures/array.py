@@ -11,5 +11,15 @@ def binary_search(ints: 'Sorted linear collection',
     return pos
 
 
-
-
+def get_subsets(ints: []) -> []:
+    all_subsets = []
+    #the same as multiplying 1 by 2**len(ints)
+    subsets_number = 1 << len(ints)
+    for bitmask in range(0, subsets_number):
+        subset = []
+        for j in range(0, len(ints)):
+            #same as //'ing bitmask by 2**j
+            if ((bitmask >> j) & 1) == 1:
+                subset.append(ints[j])
+        all_subsets.append(subset)
+    return all_subsets
