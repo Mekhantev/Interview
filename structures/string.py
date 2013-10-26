@@ -66,3 +66,11 @@ def compress(s):
 def is_rotation(s1, s2):
     s = s1 + s1
     return s2 in s
+
+
+def get_permutations(p: str, s: str):
+    l = len(s)
+    if l == 0:
+        yield p
+    for i in range(0, l):
+        yield from get_permutations(p + s[i], s[:i] + s[i + 1:])

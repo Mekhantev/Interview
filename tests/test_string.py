@@ -29,3 +29,16 @@ class TestString(TestCase):
     def test_is_rotation(self):
         self.assertTrue(is_rotation('abcde', 'cdeab'))
         self.assertFalse(is_rotation('abcde', 'cdeba'))
+
+    def test_get_permutations(self):
+        s = 'abc'
+        expected = [
+            'abc',
+            'acb',
+            'bac',
+            'bca',
+            'cab',
+            'cba'
+        ]
+        l = [s for s in get_permutations('', s)]
+        self.assertEqual(expected, l)
