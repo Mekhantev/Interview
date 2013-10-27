@@ -19,6 +19,19 @@ class TestRecursion(TestCase):
         i = find_magic_index(ints, 0, len(ints) - 1)
         self.assertEqual(i, 4)
 
+    def test_generate_brackets(self):
+        expected = [
+            '()',
+            '(())',
+            '()()',
+            '((()))',
+            '(()())',
+            '(())()',
+            '()(())',
+            '()()()']
+        l = [s for s in generate_brackets(3)]
+        self.assertEqual(expected, l)
+
 
 class TestField(TestCase):
     def test_get_path(self):

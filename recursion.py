@@ -68,3 +68,18 @@ def find_magic_index(ints: 'Sorted linear collection',
         return find_magic_index(ints, pos + 1, right)
     else:
         return find_magic_index(ints, left, pos - 1)
+
+
+def generate_brackets(n):
+    for i in range(1, n + 1):
+        yield from _generate_brackets('', 0, 0, i)
+
+
+def _generate_brackets(s, op, cl, pairs):
+    if op == pairs and cl == pairs:
+        yield s
+    else:
+        if op < pairs:
+            yield from _generate_brackets(s + '(', op + 1, cl, pairs)
+        if cl < op:
+            yield from _generate_brackets(s + ')', op, cl + 1, pairs)
