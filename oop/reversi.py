@@ -5,7 +5,7 @@ __author__ = 'Dmitry Mekhantev'
 
 
 class Color(Enum):
-    white = 1,
+    white = 1
     black = 2
 
 
