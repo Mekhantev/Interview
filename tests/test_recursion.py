@@ -1,3 +1,4 @@
+from copy import deepcopy
 from unittest import TestCase
 from recursion import *
 
@@ -31,6 +32,27 @@ class TestRecursion(TestCase):
             '()()()']
         l = [s for s in generate_brackets(3)]
         self.assertEqual(expected, l)
+
+    def test_flood_fill(self):
+        l = 4
+        old_color = Color.red
+        new_color = Color.blue
+        screen = [[Color.red for _ in range(l)] for _ in range(l)]
+        screen[0][1] = Color.black
+        screen[1][0] = Color.black
+        screen[2][3] = Color.black
+        screen[3][1] = Color.black
+        screen[3][0] = Color.blue
+        screen[3][2] = Color.blue
+        expected = deepcopy(screen)
+        for line in range(0, len(expected)):
+            for column in range(0, len(expected[line])):
+                if expected[column][line] == old_color:
+                    expected[column][line] = new_color
+        expected[0][0] = old_color
+        expected[3][3] = old_color
+        flood_fill(screen, 2, 1, old_color, new_color)
+        self.assertEqual(screen, expected)
 
 
 class TestField(TestCase):

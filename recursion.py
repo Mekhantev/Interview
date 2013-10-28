@@ -1,4 +1,5 @@
 from collections.abc import Iterable
+from enum import Enum
 
 __author__ = 'Dmitry Mekhantev'
 
@@ -83,3 +84,21 @@ def _generate_brackets(s, op, cl, pairs):
             yield from _generate_brackets(s + '(', op + 1, cl, pairs)
         if cl < op:
             yield from _generate_brackets(s + ')', op, cl + 1, pairs)
+
+
+class Color(Enum):
+    black = 1
+    red = 2
+    blue = 3
+
+
+def flood_fill(screen: list, x, y, old_color: Color, new_color: Color):
+    if x < 0 or x == len(screen[0]) or y < 0 or y == len(screen):
+        return
+    if screen[y][x] != old_color:
+        return
+    screen[y][x] = new_color
+    flood_fill(screen, x - 1, y, old_color, new_color)
+    flood_fill(screen, x + 1, y, old_color, new_color)
+    flood_fill(screen, x, y + 1, old_color, new_color)
+    flood_fill(screen, x, y - 1, old_color, new_color)
