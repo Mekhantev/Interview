@@ -1,8 +1,6 @@
 from unittest import TestCase
 from structures.chat import Server
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class TestServer(TestCase):
     def test_register(self):

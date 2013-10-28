@@ -1,8 +1,6 @@
 from unittest import TestCase
 from oop.online_library import *
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class TestOnlineLibrary(TestCase):
     def test_register(self):

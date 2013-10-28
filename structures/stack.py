@@ -1,7 +1,5 @@
 from copy import deepcopy
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class Stack:
     def __init__(self):

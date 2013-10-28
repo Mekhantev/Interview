@@ -1,6 +1,3 @@
-__author__ = 'Dmitry Mekhantev'
-
-
 class TreeNode():
     def __init__(self, value=None):
         self.left = None

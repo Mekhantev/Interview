@@ -1,8 +1,6 @@
 from abc import ABCMeta
 from structures.linked_list import Node
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class StacksBasedQueue:
     def __init__(self):

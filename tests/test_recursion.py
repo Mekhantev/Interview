@@ -2,8 +2,6 @@ from copy import deepcopy
 from unittest import TestCase
 from recursion import *
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class TestRecursion(TestCase):
     def test_count_ways(self):

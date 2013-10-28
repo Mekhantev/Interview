@@ -1,8 +1,6 @@
 from unittest import TestCase
 from structures.matrix import *
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class TestMatrix(TestCase):
     def test_rotate(self):

@@ -1,8 +1,6 @@
 from unittest.case import TestCase
 from oop.cards import *
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class TestCard(TestCase):
     def test_properties(self):

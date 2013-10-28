@@ -1,8 +1,6 @@
 from enum import Enum
 from utils import Singleton
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class Color(Enum):
     white = 1

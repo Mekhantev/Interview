@@ -1,8 +1,6 @@
 from abc import ABCMeta
 from collections.abc import Iterable
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class Storage(metaclass=ABCMeta):
     def __init__(self, artist: str, songs: Iterable):

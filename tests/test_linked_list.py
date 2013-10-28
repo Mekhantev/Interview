@@ -1,8 +1,6 @@
 from unittest import TestCase
 from structures.linked_list import *
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class TestLinkedList(TestCase):
     def test_delete_dups(self):

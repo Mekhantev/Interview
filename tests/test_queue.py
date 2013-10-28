@@ -1,8 +1,6 @@
 from unittest import TestCase
 from structures.my_queue import *
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class TestAnimalQueue(TestCase):
     def test_enqueue(self):

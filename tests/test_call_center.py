@@ -1,8 +1,6 @@
 from unittest.case import TestCase
 from oop.call_center import CallHandler, Call, Rank
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class TestCallHandler(TestCase):
     def test_dispatch_call(self):

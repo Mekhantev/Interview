@@ -1,8 +1,6 @@
 from collections.abc import Iterable
 from enum import Enum
 
-__author__ = 'Dmitry Mekhantev'
-
 
 def count_ways(n):
     if n < 0:

@@ -3,8 +3,6 @@ import string
 from unittest import TestCase
 from oop.file_system import *
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class TestFile(TestCase):
     def test_size(self):

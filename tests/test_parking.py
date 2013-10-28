@@ -1,8 +1,6 @@
 from unittest.case import TestCase
 from oop.parking import *
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class TestParking(TestCase):
     def test_add(self):

@@ -1,6 +1,3 @@
-__author__ = 'Dmitry Mekhantev'
-
-
 class Pair():
     def __init__(self, key, value):
         self.key = key

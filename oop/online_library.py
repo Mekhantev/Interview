@@ -1,6 +1,3 @@
-__author__ = 'Dmitry Mekhantev'
-
-
 class Book():
     def __init__(self, author, title, body):
         self.author = author
@@ -23,7 +20,7 @@ class OnlineLibrary():
         self._books = {}
         self._add_book('Ray Bradbury', 'Fahrenheit 451', 'aaa')
         self._add_book('George Orwell', '1984', 'bbb')
-        self._add_book('Aldous Huxley', 'Brave New World','ccc')
+        self._add_book('Aldous Huxley', 'Brave New World', 'ccc')
         self._users = {}
         self._active_users = []
 

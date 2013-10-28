@@ -1,7 +1,5 @@
 from utils import first
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class Vehicle():
     @property

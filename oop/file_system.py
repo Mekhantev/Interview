@@ -2,8 +2,6 @@ from abc import ABCMeta, abstractproperty
 import os
 from utils import datetime_now_float
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class Entry(metaclass=ABCMeta):
     @property

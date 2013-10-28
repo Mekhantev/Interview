@@ -1,8 +1,6 @@
 from unittest import TestCase
 from structures.hash_table import *
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class TestHashTable(TestCase):
     def test_add(self):
@@ -28,4 +26,4 @@ class TestHashTable(TestCase):
         h.add(pair1)
         self.assertEqual(h.get(pair1.key), pair1)
         self.assertRaises(Exception, h.get, pair2.key)
-        self.assertRaises(Exception,h.get,'key12')
+        self.assertRaises(Exception, h.get, 'key12')

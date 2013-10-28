@@ -1,6 +1,3 @@
-__author__ = 'Dmitry Mekhantev'
-
-
 def binary_search(ints: 'Sorted linear collection',
                   i: int, left: int, right: int) -> int:
     pos = (left + right) // 2

@@ -1,7 +1,5 @@
 from enum import Enum
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class Status(Enum):
     white = 1

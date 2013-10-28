@@ -1,8 +1,6 @@
 from unittest import TestCase
 from oop.reversi import *
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class TestPiece(TestCase):
     def test_flip(self):

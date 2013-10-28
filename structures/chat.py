@@ -1,8 +1,6 @@
 from datetime import datetime
 from uuid import uuid1
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class Client():
     @property

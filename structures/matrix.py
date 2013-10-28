@@ -1,7 +1,5 @@
 from copy import deepcopy
 
-__author__ = 'Dmitry Mekhantev'
-
 
 def rotate(m):
     m = deepcopy(m)

@@ -1,8 +1,6 @@
 from unittest import TestCase
 from structures.graph import *
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class TestGraph(TestCase):
     def test_search(self):

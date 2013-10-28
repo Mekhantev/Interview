@@ -1,8 +1,6 @@
 from unittest.case import TestCase
 from oop.puzzle import *
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class TestPuzzle(TestCase):
     def test_solve(self):

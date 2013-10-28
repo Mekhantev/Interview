@@ -1,8 +1,6 @@
 from unittest import TestCase
 from structures.string import *
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class TestString(TestCase):
     def test_reverse(self):

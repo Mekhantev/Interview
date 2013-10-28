@@ -1,8 +1,6 @@
 from unittest import TestCase
 from structures.binary_tree import *
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class TestBinaryTree(TestCase):
     def test_get_height(self):

@@ -1,6 +1,3 @@
-__author__ = 'Dmitry Mekhantev'
-
-
 def all_chars_single(s: str) -> bool:
     for i, c in enumerate(s):
         for y, cc in enumerate(s):

@@ -1,8 +1,6 @@
 from abc import ABCMeta, abstractproperty
 from collections.abc import Iterable
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class Edge(metaclass=ABCMeta):
     @abstractproperty

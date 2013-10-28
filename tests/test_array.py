@@ -1,8 +1,6 @@
 from unittest import TestCase
 from structures.array import *
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class TestArray(TestCase):
     def test_binary_search(self):

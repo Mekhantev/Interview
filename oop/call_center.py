@@ -2,8 +2,6 @@ from abc import ABCMeta
 from enum import Enum
 from utils import Singleton
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class Rank(Enum):
     low = 0

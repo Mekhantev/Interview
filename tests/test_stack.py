@@ -1,8 +1,6 @@
 from unittest import TestCase
 from structures.stack import *
 
-__author__ = 'Dmitry Mekhantev'
-
 
 class TestStack(TestCase):
     def test_push(self):

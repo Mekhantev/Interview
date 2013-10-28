@@ -1,7 +1,5 @@
 from datetime import datetime
 
-__author__ = 'Dmitry Mekhantev'
-
 
 def first(iterable):
     for item in iterable:
