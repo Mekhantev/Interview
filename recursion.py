@@ -100,3 +100,21 @@ def flood_fill(screen: list, x, y, old_color: Color, new_color: Color):
     flood_fill(screen, x + 1, y, old_color, new_color)
     flood_fill(screen, x, y + 1, old_color, new_color)
     flood_fill(screen, x, y - 1, old_color, new_color)
+
+
+def make_change(n, denom):
+    next_denom = 0
+    if denom == 25:
+        next_denom = 10
+    elif denom == 10:
+        next_denom = 5
+    elif denom == 5:
+        next_denom = 1
+    else:
+        return 1
+    ways = 0
+    i = 0
+    while i * denom <= n:
+        ways += make_change(n - i * denom, next_denom)
+        i += 1
+    return ways

@@ -52,6 +52,9 @@ class TestRecursion(TestCase):
         flood_fill(screen, 2, 1, old_color, new_color)
         self.assertEqual(screen, expected)
 
+    def test_make_change(self):
+        self.assertEqual(242, make_change(100, 25))
+
 
 class TestField(TestCase):
     def test_get_path(self):
