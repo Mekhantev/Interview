@@ -1,5 +1,6 @@
 from collections.abc import Iterable
 from enum import Enum
+from itertools import permutations
 
 
 def count_ways(n):
@@ -118,3 +119,11 @@ def make_change(n, denom):
         ways += make_change(n - i * denom, next_denom)
         i += 1
     return ways
+
+
+def place_queens(n=8):
+    cols = range(n)
+    for vec in permutations(cols):
+        if (n == len(set(vec[i] + i for i in cols))
+                == len(set(vec[i] - i for i in cols))):
+            yield vec

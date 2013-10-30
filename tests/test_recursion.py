@@ -55,6 +55,11 @@ class TestRecursion(TestCase):
     def test_make_change(self):
         self.assertEqual(242, make_change(100, 25))
 
+    def test_place_queens(self):
+        solutions = set(sol for sol in place_queens())
+        expected = 92
+        self.assertEqual(expected, len(solutions))
+
 
 class TestField(TestCase):
     def test_get_path(self):
