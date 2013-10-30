@@ -1,5 +1,5 @@
 from unittest import TestCase
-from structures.chat import Server
+from oop.chat import *
 
 
 class TestServer(TestCase):
@@ -10,7 +10,7 @@ class TestServer(TestCase):
         server.register(login, password)
         client = server.login(login, password)
         self.assertEqual(login, client.login)
-        self.assertRaises(Exception, server.register, login, password)
+        self.assertRaises(UserAlreadyExistsError, server.register, login, password)
 
     def test_login(self):
         server = Server()
@@ -19,9 +19,9 @@ class TestServer(TestCase):
         server.register(login, password)
         client = server.login(login, password)
         self.assertEqual(login, client.login)
-        self.assertRaises(Exception, server.login, 'a', 'b')
-        self.assertRaises(Exception, server.login, login, 'b')
-        self.assertRaises(Exception, server.login, login, password)
+        self.assertRaises(UserNotFoundError, server.login, 'a', 'b')
+        self.assertRaises(IncorrectAuthDataError, server.login, login, 'b')
+        self.assertRaises(UserLoggedInError, server.login, login, password)
 
     def test_logout(self):
         server = Server()
@@ -43,11 +43,11 @@ class TestServer(TestCase):
         server.logout(client)
         message = 'Hello!'
         recipient = 'Alien'
-        self.assertRaises(Exception, server.send_message, message, client, recipient)
+        self.assertRaises(UserNotLoggedInError, server.send_message, message, client, recipient)
         client2 = server.login(login, password)
-        self.assertRaises(Exception, server.send_message, message, client, recipient)
+        self.assertRaises(UserLoggedInError, server.send_message, message, client, recipient)
         client = client2
-        self.assertRaises(Exception, server.send_message, message, client, "abcd")
+        self.assertRaises(UserNotFoundError, server.send_message, message, client, "abcd")
         r_password = 'abc'
         server.register(recipient, r_password)
         client2 = server.login(recipient, r_password)

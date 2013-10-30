@@ -10,7 +10,7 @@ class TestOnlineLibrary(TestCase):
         ol.register(login, password)
         user = ol.login(login, password)
         self.assertEqual(login, user.login)
-        self.assertRaises(Exception, ol.register, login, password)
+        self.assertRaises(UserAlreadyExistsError, ol.register, login, password)
 
     def test_login(self):
         ol = OnlineLibrary()
@@ -19,7 +19,7 @@ class TestOnlineLibrary(TestCase):
         ol.register(login, password)
         user = ol.login(login, password)
         self.assertEqual(login, user.login)
-        self.assertRaises(Exception, ol.login, 'a', 'b')
+        self.assertRaises(IncorrectAuthDataError, ol.login, 'a', 'b')
 
     def test_logout(self):
         ol = OnlineLibrary()
@@ -44,6 +44,6 @@ class TestOnlineLibrary(TestCase):
         self.assertEqual(user.current_book.author, author)
         self.assertEqual(user.current_book.title, title)
         ol.logout(user)
-        self.assertRaises(Exception, ol.get_book, user, author, title)
+        self.assertRaises(UserNotLoggedInError, ol.get_book, user, author, title)
         user = ol.login(login, password)
-        self.assertRaises(Exception, ol.get_book, user, 'a', title)
+        self.assertRaises(BookNotFoundError, ol.get_book, user, 'a', title)

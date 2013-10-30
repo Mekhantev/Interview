@@ -13,7 +13,7 @@ class TestParking(TestCase):
         self.assertEqual(vehicle, parking._parking_spots[0].vehicles[0])
         for _ in range(2):
             parking.add(Car())
-        self.assertRaises(Exception, parking.add, Car())
+        self.assertRaises(OutOfSpaceError, parking.add, Car())
 
     def test_remove(self):
         parking = Parking()

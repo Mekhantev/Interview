@@ -1,6 +1,14 @@
 from copy import deepcopy
 
 
+class EmptyError(Exception):
+    pass
+
+
+class OutOfSpaceError(Exception):
+    pass
+
+
 class Stack:
     def __init__(self):
         self._buffer = []
@@ -15,18 +23,18 @@ class Stack:
 
     def pop(self):
         if self.is_empty():
-            raise Exception('Stack is empty')
+            raise EmptyError('Stack is empty')
         self._min_buffer.pop()
         return self._buffer.pop()
 
     def peek(self):
         if self.is_empty():
-            raise Exception('Stack is empty')
+            raise EmptyError('Stack is empty')
         return self._buffer[-1]
 
     def min(self):
         if self.is_empty():
-            raise Exception('Stack is empty')
+            raise EmptyError('Stack is empty')
         return self._min_buffer[-1]
 
     def is_empty(self):
@@ -44,14 +52,14 @@ class FixedTripleStack:
 
     def push(self, stack_num, value):
         if self._pointers[stack_num] == self._stack_size:
-            raise Exception('Out of space')
+            raise OutOfSpaceError('Out of space')
         index = self._stack_size * stack_num + self._pointers[stack_num]
         self._buffer[index] = value
         self._pointers[stack_num] += 1
 
     def pop(self, stack_num):
         if self.is_empty(stack_num):
-            raise Exception('Stack is empty')
+            raise EmptyError('Stack is empty')
         index = self._stack_size * stack_num + self._pointers[stack_num] - 1
         value = self._buffer[index]
         self._buffer[index] = None
@@ -60,7 +68,7 @@ class FixedTripleStack:
 
     def peek(self, stack_num):
         if self.is_empty(stack_num):
-            raise Exception('Stack is empty')
+            raise EmptyError('Stack is empty')
         index = self._stack_size * stack_num + self._pointers[stack_num] - 1
         return self._buffer[index]
 
@@ -91,7 +99,7 @@ class SetOfStacks:
 
     def pop(self):
         if self.is_empty():
-            raise Exception('Stack is empty')
+            raise EmptyError('Stack is empty')
         value = self._stacks[-1].pop()
         if len(self._stacks[-1]) == 0:
             self._stacks.pop()
@@ -99,7 +107,7 @@ class SetOfStacks:
 
     def peek(self):
         if self.is_empty():
-            raise Exception('Stack is empty')
+            raise EmptyError('Stack is empty')
         return self._stacks[-1][-1]
 
     def is_empty(self):

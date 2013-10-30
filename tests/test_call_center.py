@@ -1,5 +1,5 @@
 from unittest.case import TestCase
-from oop.call_center import CallHandler, Call, Rank
+from oop.call_center import *
 
 
 class TestCallHandler(TestCase):
@@ -16,4 +16,4 @@ class TestCallHandler(TestCase):
         self.assertEqual(handler.managers[0].current_call, call)
         for i in range(5):
             handler.dispatch_call(Call(0))
-        self.assertRaises(Exception, handler.dispatch_call, Call(0))
+        self.assertRaises(BusyError, handler.dispatch_call, Call(0))

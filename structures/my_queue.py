@@ -15,7 +15,7 @@ class StacksBasedQueue:
             while len(self.stack1) > 0:
                 self.stack2.append(self.stack1.pop())
         if len(self.stack2) == 0:
-            raise Exception('Queue is empty')
+            raise EmptyError('Queue is empty')
         return self.stack2.pop()
 
 
@@ -28,6 +28,14 @@ class Cat(Animal):
 
 
 class Dog(Animal):
+    pass
+
+
+class EmptyError(Exception):
+    pass
+
+
+class NotFoundError(Exception):
     pass
 
 
@@ -49,7 +57,7 @@ class AnimalQueue:
 
     def dequeue(self) -> Animal:
         if not self._first_animal:
-            raise Exception('Queue is empty')
+            raise EmptyError('Queue is empty')
         animal = self._first_animal.data
         self._first_animal = self._first_animal.next
         if not self._first_animal:
@@ -58,7 +66,7 @@ class AnimalQueue:
 
     def _dequeue_by_type(self, animal_type):
         if not self._first_animal:
-            raise Exception('Queue is empty')
+            raise EmptyError('Queue is empty')
         current = self._first_animal
         if isinstance(current.data, animal_type):
             self._first_animal = current.next
@@ -75,11 +83,11 @@ class AnimalQueue:
     def dequeue_cat(self) -> Cat:
         cat = self._dequeue_by_type(Cat)
         if not cat:
-            raise Exception('No cats in queue')
+            raise NotFoundError('No cats in queue')
         return cat
 
     def dequeue_dog(self) -> Dog:
         dog = self._dequeue_by_type(Dog)
         if not dog:
-            raise Exception('No dogs in queue')
+            raise NotFoundError('No dogs in queue')
         return dog

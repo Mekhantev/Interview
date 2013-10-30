@@ -14,10 +14,10 @@ class TestHashTable(TestCase):
         self.assertEqual(h.get(pair1.key), pair1)
         self.assertEqual(h.get(pair2.key), pair2)
         self.assertEqual(h.get(pair3.key), pair3)
-        self.assertRaises(Exception, h.add, pair1)
+        self.assertRaises(ItemAlreadyExistsError, h.add, pair1)
         for i in range(3, 10):
             h.add(Pair('key'.join(str(i)), 'value'))
-        self.assertRaises(Exception, h.add, Pair('key10', 'value'))
+        self.assertRaises(OutOfSpaceError, h.add, Pair('key10', 'value'))
 
     def test_get(self):
         h = HashTable()
@@ -25,5 +25,5 @@ class TestHashTable(TestCase):
         pair2 = Pair('key2', 'value')
         h.add(pair1)
         self.assertEqual(h.get(pair1.key), pair1)
-        self.assertRaises(Exception, h.get, pair2.key)
-        self.assertRaises(Exception, h.get, 'key12')
+        self.assertRaises(ItemNotFoundError, h.get, pair2.key)
+        self.assertRaises(ItemNotFoundError, h.get, 'key12')

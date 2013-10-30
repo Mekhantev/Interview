@@ -34,8 +34,7 @@ class TestDirectory(TestCase):
         file = File('file_name', content, directory)
         directory.add_entry(file)
         self.assertEqual(file, directory.entries[0])
-        self.assertRaises(Exception, directory.add_entry, file)
-        self.assertRaises(Exception, directory.add_entry, File('file_name', content, directory))
+        self.assertRaises(EntryAlreadyExistsError, directory.add_entry, file)
 
     def test_remove_entry(self):
         directory = Directory('directory_name')

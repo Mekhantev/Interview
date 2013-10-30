@@ -15,6 +15,22 @@ class User():
         self.current_book = None
 
 
+class UserAlreadyExistsError(Exception):
+    pass
+
+
+class IncorrectAuthDataError(Exception):
+    pass
+
+
+class UserNotLoggedInError(Exception):
+    pass
+
+
+class BookNotFoundError(Exception):
+    pass
+
+
 class OnlineLibrary():
     def __init__(self):
         self._books = {}
@@ -28,13 +44,13 @@ class OnlineLibrary():
         key = self._get_key(login, password)
         user = self._users.get(key, None)
         if user:
-            raise Exception('User with this login already exists')
+            raise UserAlreadyExistsError('User with this login already exists')
         self._users[key] = User(login)
 
     def login(self, login_, password) -> User:
         user = self._users.get(self._get_key(login_, password), None)
         if user is None:
-            raise Exception('Wrong auth data')
+            raise IncorrectAuthDataError('Wrong auth data')
         self._active_users.append(user)
         return user
 
@@ -43,10 +59,10 @@ class OnlineLibrary():
 
     def get_book(self, user: User, author: str, title: str):
         if not user in self._active_users:
-            raise Exception('Login first')
+            raise UserNotLoggedInError('Login first')
         book = self._books.get(self._get_key(author, title), None)
         if book is None:
-            raise Exception('Book not found')
+            raise BookNotFoundError('Book not found')
         user.current_book = book
 
     def _get_key(self, primary: str, secondary: str):

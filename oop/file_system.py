@@ -21,6 +21,10 @@ class Entry(metaclass=ABCMeta):
         self.modification_date = self.creation_date
 
 
+class EntryAlreadyExistsError(Exception):
+    pass
+
+
 class Directory(Entry):
     @property
     def size(self):
@@ -43,10 +47,8 @@ class Directory(Entry):
         return count
 
     def add_entry(self, entry: Entry):
-        if entry in self._entries:
-            raise Exception('Item already exists in this directory')
         if any(e for e in self._entries if e.name == entry.name):
-            raise Exception('Item with the same name already exists')
+            raise EntryAlreadyExistsError('Item with the same name already exists')
         self._entries.append(entry)
 
     def remove_entry(self, entry: Entry):

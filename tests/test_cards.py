@@ -24,7 +24,7 @@ class TestDeck(TestCase):
         ])
         for _ in range(4):
             self.assertEqual(deck._cards[0], deck.deal_card())
-        self.assertRaises(Exception, deck.deal_card)
+        self.assertRaises(NoCardsError, deck.deal_card)
 
     def test_remaining_cards(self):
         deck = Deck([

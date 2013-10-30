@@ -16,7 +16,7 @@ class TestStack(TestCase):
             stack.push(i)
         for i in range(4, -1, -1):
             self.assertEqual(stack.pop(), i)
-        self.assertRaises(Exception, stack.pop)
+        self.assertRaises(EmptyError, stack.pop)
 
     def test_peek(self):
         stack = Stack()
@@ -25,7 +25,7 @@ class TestStack(TestCase):
         self.assertEqual(stack.peek(), 4)
         for i in range(4, -1, -1):
             self.assertEqual(stack.pop(), i)
-        self.assertRaises(Exception, stack.peek)
+        self.assertRaises(EmptyError, stack.peek)
 
     def test_min(self):
         stack = Stack()
@@ -36,7 +36,7 @@ class TestStack(TestCase):
         self.assertEqual(stack.min(), 1)
         for i in range(4):
             stack.pop()
-        self.assertRaises(Exception, stack.min)
+        self.assertRaises(EmptyError, stack.min)
 
 
 class TestSetOfStacks(TestCase):
@@ -53,7 +53,7 @@ class TestSetOfStacks(TestCase):
             stack.push(i)
         self.assertEqual([stack.pop() for i in range(10)],
                          [i for i in range(9, -1, -1)])
-        self.assertRaises(Exception, stack.pop)
+        self.assertRaises(EmptyError, stack.pop)
 
     def test_peek(self):
         stack = SetOfStacks()
@@ -62,7 +62,7 @@ class TestSetOfStacks(TestCase):
         self.assertEqual(stack.peek(), 9)
         self.assertEqual([stack.pop() for i in range(10)],
                          [i for i in range(9, -1, -1)])
-        self.assertRaises(Exception, stack.peek)
+        self.assertRaises(EmptyError, stack.peek)
 
 
 class TestStackSort(TestCase):
@@ -85,7 +85,7 @@ class TestFixedTripleStack(TestCase):
         for i in range(4):
             stack.pop(1)
         self.assertEqual(stack.pop(1), 6)
-        self.assertRaises(Exception, stack.push, 2, 1)
+        self.assertRaises(OutOfSpaceError, stack.push, 2, 1)
 
     def test_pop(self):
         stack = FixedTripleStack()
@@ -98,7 +98,7 @@ class TestFixedTripleStack(TestCase):
         self.assertEqual(stack.pop(2), 6)
         for i in range(7):
             stack.pop(1)
-        self.assertRaises(Exception, stack.pop, 1)
+        self.assertRaises(EmptyError, stack.pop, 1)
 
     def test_peek(self):
         stack = FixedTripleStack()
@@ -111,7 +111,7 @@ class TestFixedTripleStack(TestCase):
         self.assertEqual(stack.peek(0), 3)
         for i in range(6):
             stack.pop(2)
-        self.assertRaises(Exception, stack.peek, 2)
+        self.assertRaises(EmptyError, stack.peek, 2)
 
 
 class TestHanoiTower(TestCase):

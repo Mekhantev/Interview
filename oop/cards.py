@@ -33,6 +33,10 @@ class CardsHolder(metaclass=ABCMeta):
         self._cards = []
 
 
+class NoCardsError(Exception):
+    pass
+
+
 class Deck(CardsHolder):
     def __init__(self, cards: Iterable):
         super().__init__()
@@ -40,7 +44,7 @@ class Deck(CardsHolder):
 
     def deal_card(self):
         if self.remaining_cards() == 0:
-            raise Exception('No cards left')
+            raise NoCardsError('No cards left')
         return self._cards.pop(0)
 
     def remaining_cards(self):

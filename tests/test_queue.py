@@ -18,7 +18,7 @@ class TestAnimalQueue(TestCase):
             queue.enqueue(animal)
         for animal in animals:
             self.assertEqual(animal, queue.dequeue())
-        self.assertRaises(Exception, queue.dequeue)
+        self.assertRaises(EmptyError, queue.dequeue)
 
     def test_dequeue_cat(self):
         queue = AnimalQueue()
@@ -28,14 +28,14 @@ class TestAnimalQueue(TestCase):
         cats = (animal for animal in animals if isinstance(animal, Cat))
         for cat in cats:
             self.assertEqual(cat, queue.dequeue_cat())
-        self.assertRaises(Exception, queue.dequeue_cat)
+        self.assertRaises(NotFoundError, queue.dequeue_cat)
         queue = AnimalQueue()
         cats = [Cat(), Cat()]
         for cat in cats:
             queue.enqueue(cat)
         for cat in cats:
             self.assertEqual(cat, queue.dequeue_cat())
-        self.assertRaises(Exception, queue.dequeue_cat)
+        self.assertRaises(EmptyError, queue.dequeue_cat)
 
     def test_dequeue_dog(self):
         queue = AnimalQueue()
@@ -45,14 +45,14 @@ class TestAnimalQueue(TestCase):
         dogs = (animal for animal in animals if isinstance(animal, Dog))
         for dog in dogs:
             self.assertEqual(dog, queue.dequeue_dog())
-        self.assertRaises(Exception, queue.dequeue_dog)
+        self.assertRaises(NotFoundError, queue.dequeue_dog)
         queue = AnimalQueue()
         dogs = [Dog(), Dog()]
         for dog in dogs:
             queue.enqueue(dog)
         for dog in dogs:
             self.assertEqual(dog, queue.dequeue_dog())
-        self.assertRaises(Exception, queue.dequeue_dog)
+        self.assertRaises(EmptyError, queue.dequeue_dog)
 
 
 class TestStacksBasedQueue(TestCase):
@@ -77,4 +77,4 @@ class TestStacksBasedQueue(TestCase):
             queue.enqueue(i)
         for i in values:
             self.assertEqual(queue.dequeue(), i)
-        self.assertRaises(Exception, queue.dequeue)
+        self.assertRaises(EmptyError, queue.dequeue)

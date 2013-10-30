@@ -50,6 +50,10 @@ class Director(Employee):
         self.rank = 2
 
 
+class BusyError(Exception):
+    pass
+
+
 class CallHandler(metaclass=Singleton):
     @property
     def operators(self) -> tuple:
@@ -79,9 +83,4 @@ class CallHandler(metaclass=Singleton):
             for employee in self._employee_levels[rank]:
                 if not employee.busy:
                     return employee
-        raise Exception('All employees are busy')
-
-
-
-
-
+        raise BusyError('All employees are busy')

@@ -39,6 +39,26 @@ class Message():
         self.to = to
 
 
+class UserAlreadyExistsError(Exception):
+    pass
+
+
+class UserNotFoundError(Exception):
+    pass
+
+
+class IncorrectAuthDataError(Exception):
+    pass
+
+
+class UserLoggedInError(Exception):
+    pass
+
+
+class UserNotLoggedInError(Exception):
+    pass
+
+
 class Server():
     def __init__(self):
         self._users = {}
@@ -48,17 +68,17 @@ class Server():
     def register(self, login, password):
         user = self._users.get(login)
         if user:
-            raise Exception('User with this login already exists')
+            raise UserAlreadyExistsError('User with this login already exists')
         self._users[login] = User(login, password)
 
     def login(self, login_, password) -> Client:
         user = self._users.get(login_)
         if not user:
-            raise Exception('User doesnt exist')
+            raise UserNotFoundError('User doesnt exist')
         if user.hashed_password != hash(password):
-            raise Exception('Wrong auth data')
+            raise IncorrectAuthDataError('Wrong auth data')
         if self._active_clients.get(user.login):
-            raise Exception('User has already logged in')
+            raise UserLoggedInError('User has already logged in')
         id_ = uuid1()
         client = Client(id_, user.login)
         self._active_clients[user.login] = client
@@ -70,17 +90,14 @@ class Server():
     def send_message(self, message: str, client: Client, recipient: str):
         c = self._active_clients.get(client.login)
         if not c:
-            raise Exception('Login first')
+            raise UserNotLoggedInError('Login first')
         if c.id != client.id:
-            raise Exception('User logged in from another client')
+            raise UserLoggedInError('User logged in from another client')
         r = self._users.get(recipient)
         if not r:
-            raise Exception('Recipient doesnt exist')
+            raise UserNotFoundError('Recipient doesnt exist')
         m = Message(message, datetime.utcnow(), c.login, r.login)
         r_c = self._active_clients.get(recipient)
         if r_c:
             r_c.inbox.append(m)
         self._history.append(m)
-
-
-

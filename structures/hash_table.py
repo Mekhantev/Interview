@@ -4,6 +4,18 @@ class Pair():
         self.value = value
 
 
+class OutOfSpaceError(Exception):
+    pass
+
+
+class ItemAlreadyExistsError(Exception):
+    pass
+
+
+class ItemNotFoundError(Exception):
+    pass
+
+
 class HashTable():
     @property
     def _max_items(self):
@@ -15,25 +27,25 @@ class HashTable():
 
     def add(self, pair: Pair):
         if self._current_items_number == self._max_items:
-            raise Exception('Hash table has no empty space')
+            raise OutOfSpaceError('Hash table has no empty space')
         i = self._hash(pair.key)
         if not self._items[i]:
             self._items[i] = [pair]
         else:
             for e in self._items[i]:
                 if e.key == pair.key:
-                    raise Exception('Item with the same key already exists')
+                    raise ItemAlreadyExistsError('Item with the same key already exists')
             self._items[i].append(pair)
         self._current_items_number += 1
 
     def get(self, key):
         i = self._hash(key)
         if not self._items[i]:
-            raise Exception('There is no element with such key')
+            raise ItemNotFoundError('There is no element with such key')
         for e in self._items[i]:
             if e.key == key:
                 return e
-        raise Exception('There is no element with such key')
+        raise ItemNotFoundError('There is no element with such key')
 
     def _hash(self, key) -> int:
         h = 0

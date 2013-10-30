@@ -31,6 +31,10 @@ class ParkingSpot():
         self.vehicles = []
 
 
+class OutOfSpaceError(Exception):
+    pass
+
+
 class Parking():
     def __init__(self):
         self._parking_spots = [
@@ -46,7 +50,7 @@ class Parking():
             spot = first(spot for spot in self._parking_spots
                          if spot.empty_space >= vehicle.size)
         except ValueError:
-            raise Exception('No empty parking spot')
+            raise OutOfSpaceError('No empty parking spot')
         spot.vehicles.append(vehicle)
 
     def remove(self, vehicle: Vehicle):
