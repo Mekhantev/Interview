@@ -60,6 +60,14 @@ class TestRecursion(TestCase):
         expected = 92
         self.assertEqual(expected, len(solutions))
 
+    def test_create_box_stack(self):
+        boxes = [Box(3), Box(14), Box(6), Box(19), Box(9), Box(1), Box(7)]
+        bottom = Box(25)
+        result = create_box_stack(boxes, bottom, {})
+        boxes.append(bottom)
+        expected = sorted(boxes, key=lambda box: box.size)
+        self.assertEqual(expected, result)
+
 
 class TestField(TestCase):
     def test_get_path(self):

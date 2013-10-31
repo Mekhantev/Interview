@@ -1,4 +1,5 @@
 from collections.abc import Iterable
+from copy import deepcopy
 from enum import Enum
 from itertools import permutations
 
@@ -127,3 +128,37 @@ def place_queens(n=8):
         if (n == len(set(vec[i] + i for i in cols))
                 == len(set(vec[i] - i for i in cols))):
             yield vec
+
+
+class Box():
+    def __init__(self, size=1):
+        self.size = size
+
+    def can_be_above(self, box):
+        return True if box.size > self.size else False
+
+    def __eq__(self, other):
+        return self.size == other.size
+
+    def __hash__(self):
+        return hash(self.size)
+
+
+def create_box_stack(boxes: list, bottom: Box, stack_map: dict):
+    if bottom and bottom in stack_map:
+        return stack_map[bottom]
+    max_height = 0
+    max_stack = None
+    for i in range(len(boxes)):
+        if boxes[i].can_be_above(bottom):
+            new_stack = create_box_stack(boxes, boxes[i], stack_map)
+            new_height = len(new_stack)
+            if new_height > max_height:
+                max_stack = new_stack
+                max_height = new_height
+    if not max_stack:
+        max_stack = []
+    if bottom:
+        max_stack.append(bottom)
+    stack_map[bottom] = max_stack
+    return deepcopy(max_stack)
