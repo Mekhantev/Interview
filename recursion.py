@@ -135,7 +135,7 @@ class Box():
         self.size = size
 
     def can_be_above(self, box):
-        return True if box.size > self.size else False
+        return box.size > self.size
 
     def __eq__(self, other):
         return self.size == other.size
