@@ -47,7 +47,7 @@ class FixedTripleStack:
         self._stack_size = 10
         self._buffer = []
         self._pointers = [0, 0, 0]
-        for i in range(0, self._stack_size * 3):
+        for i in range(self._stack_size * 3):
             self._buffer.append(None)
 
     def push(self, stack_num, value):

@@ -41,7 +41,7 @@ def get_from_end(first_node: Node, k: 'Index from the end of list') -> Node:
         length += 1
         n = n.next
     n = first_node
-    for i in range(0, length - k - 1):
+    for i in range(length - k - 1):
         n = n.next
     return n
 

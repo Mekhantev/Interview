@@ -43,8 +43,8 @@ class TestRecursion(TestCase):
         screen[3][0] = Color.blue
         screen[3][2] = Color.blue
         expected = deepcopy(screen)
-        for line in range(0, len(expected)):
-            for column in range(0, len(expected[line])):
+        for line in range(len(expected)):
+            for column in range(len(expected[line])):
                 if expected[column][line] == old_color:
                     expected[column][line] = new_color
         expected[0][0] = old_color

@@ -69,5 +69,5 @@ def get_permutations(p: str, s: str):
     l = len(s)
     if l == 0:
         yield p
-    for i in range(0, l):
+    for i in range(l):
         yield from get_permutations(p + s[i], s[:i] + s[i + 1:])
