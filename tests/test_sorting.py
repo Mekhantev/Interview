@@ -1,5 +1,5 @@
 from unittest import TestCase
-from sorting import merge
+from sorting import *
 
 
 class TestSorting(TestCase):
@@ -9,3 +9,25 @@ class TestSorting(TestCase):
         expected = sorted(la + lb)
         merge(la, lb)
         self.assertEqual(la, expected)
+
+    def test_sort_strings_by_anagram(self):
+        strings = [
+            'abc',
+            'abcd',
+            'bcd',
+            'bac',
+            'badc',
+            'abcdef',
+            'adbc'
+        ]
+        expected = [
+            'abc',
+            'bac',
+            'abcd',
+            'badc',
+            'adbc',
+            'abcdef',
+            'bcd'
+        ]
+        result = sort_strings_by_anagram(strings)
+        self.assertEqual(expected, result)

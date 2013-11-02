@@ -13,3 +13,7 @@ def merge(la: list, lb: list):
     while lb_i < lb_end:
         la.append(lb[lb_i])
         lb_i += 1
+
+
+def sort_strings_by_anagram(strings: list) -> list:
+    return sorted(strings, key=sorted)
