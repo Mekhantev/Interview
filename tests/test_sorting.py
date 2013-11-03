@@ -31,3 +31,16 @@ class TestSorting(TestCase):
         ]
         result = sort_strings_by_anagram(strings)
         self.assertEqual(expected, result)
+
+    def test_search(self):
+        ints = [11, 16, 20, 23, 27, 30, 1, 5, 7]
+        i = search(ints, 0, len(ints) - 1, 27)
+        self.assertEqual(4, i)
+        i = search(ints, 0, len(ints) - 1, 11)
+        self.assertEqual(0, i)
+        for _ in range(3):
+            ints.append(ints.pop(0))
+        i = search(ints, 0, len(ints) - 1, 27)
+        self.assertEqual(1, i)
+        i = search(ints, 0, len(ints) - 1, 11)
+        self.assertEqual(6, i)
