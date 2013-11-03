@@ -34,13 +34,13 @@ class TestSorting(TestCase):
 
     def test_search(self):
         ints = [11, 16, 20, 23, 27, 30, 1, 5, 7]
-        i = search(ints, 0, len(ints) - 1, 27)
-        self.assertEqual(4, i)
-        i = search(ints, 0, len(ints) - 1, 11)
-        self.assertEqual(0, i)
+        left = 0
+        right = len(ints) - 1
+        first_number = 27
+        second_number = 11
+        self.assertEqual(4, search(ints, left, right, first_number))
+        self.assertEqual(0, search(ints, left, right, second_number))
         for _ in range(3):
             ints.append(ints.pop(0))
-        i = search(ints, 0, len(ints) - 1, 27)
-        self.assertEqual(1, i)
-        i = search(ints, 0, len(ints) - 1, 11)
-        self.assertEqual(6, i)
+        self.assertEqual(1, search(ints, left, right, first_number))
+        self.assertEqual(6, search(ints, left, right, second_number))
