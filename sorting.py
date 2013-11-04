@@ -34,3 +34,30 @@ def search(ints: list, left, right, x) -> int:
             return search(ints, mid + 1, right, x)
         else:
             return search(ints, left, mid - 1, x)
+
+
+def search_string(strings: list, left, right, s) -> int:
+    mid = (left + right) // 2
+
+    if not strings[mid]:
+        l = mid - 1
+        r = mid + 1
+        while True:
+            if l < left and r > right:
+                raise IndexError()
+            elif l >= left and strings[l]:
+                mid = l
+                break
+            elif r <= right and strings[r]:
+                mid = r
+                break
+            l -= 1
+            r += 1
+
+    if s == strings[mid]:
+        return mid
+
+    if s > strings[mid]:
+        return search_string(strings, mid + 1, right, s)
+    else:
+        return search_string(strings, left, mid - 1, s)

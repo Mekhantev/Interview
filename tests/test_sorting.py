@@ -44,3 +44,12 @@ class TestSorting(TestCase):
             ints.append(ints.pop(0))
         self.assertEqual(1, search(ints, left, right, first_number))
         self.assertEqual(6, search(ints, left, right, second_number))
+
+    def test_search_string(self):
+        strings = ['abc', '', 'bcd', '', '', 'ghj', 'nfm', '', 'pos', 'sdq']
+        s = 'pos'
+        self.assertEqual(strings.index(s), search_string(strings, 0, len(strings) - 1, s))
+        s = 'abc'
+        self.assertEqual(strings.index(s), search_string(strings, 0, len(strings) - 1, s))
+        s = 'cba'
+        self.assertRaises(IndexError, search_string, strings, 0, len(strings) - 1, s)
