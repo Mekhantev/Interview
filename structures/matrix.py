@@ -36,3 +36,16 @@ def set_zeros(m):
             if i == coordinates[0] or y == coordinates[1]:
                 m[i][y] = 0
     return m
+
+
+def find_element(matrix: 'Sorted matrix', element):
+    row = 0
+    column = len(matrix[0]) - 1
+    while row < len(matrix) and column >= 0:
+        if matrix[row][column] == element:
+            return True
+        elif matrix[row][column] > element:
+            column -= 1
+        else:
+            row += 1
+    return False

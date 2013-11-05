@@ -25,3 +25,12 @@ class TestMatrix(TestCase):
                            [0, 0, 0, 0],
                            [22, 23, 0, 25]]
         self.assertEqual(set_zeros(m), expected_matrix)
+
+    def test_find_element(self):
+        m = [[10, 20, 40, 60],
+             [22, 30, 50, 66],
+             [32, 40, 55, 70],
+             [49, 56, 68, 78]]
+
+        self.assertTrue(find_element(m, 55))
+        self.assertFalse(find_element(m, 31))
