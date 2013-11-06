@@ -72,4 +72,5 @@ class TestArray(TestCase):
 
     def test_sort_by_height_width(self):
         people = [(200, 120), (170, 62), (180, 75), (190, 112), (175, 55), (186, 80), (170, 60), (190, 110)]
-        self.assertEqual(sorted(people, key=lambda h: (h[0], h[1])), sort_by_height_width(people))
+        expected = [(170, 60), (170, 62), (175, 55), (180, 75), (186, 80), (190, 110), (190, 112), (200, 120)]
+        self.assertEqual(expected, sort_by_height_width(people))
