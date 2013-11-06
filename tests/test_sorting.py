@@ -53,3 +53,7 @@ class TestSorting(TestCase):
         self.assertEqual(strings.index(s), search_string(strings, 0, len(strings) - 1, s))
         s = 'cba'
         self.assertRaises(IndexError, search_string, strings, 0, len(strings) - 1, s)
+
+    def test_build_human_tower(self):
+        people = [(200, 120), (170, 62), (180, 75), (190, 112), (175, 55), (186, 80), (170, 60), (190, 110)]
+        self.assertEqual(sorted(people, key=lambda h: (h[0], h[1])), build_human_tower(people))

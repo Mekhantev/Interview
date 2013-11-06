@@ -61,3 +61,8 @@ def search_string(strings: list, left, right, s) -> int:
         return search_string(strings, mid + 1, right, s)
     else:
         return search_string(strings, left, mid - 1, s)
+
+
+def build_human_tower(people):
+    sorted_people = sorted(people, key=lambda h: (h[0], h[1]))
+    return sorted_people
