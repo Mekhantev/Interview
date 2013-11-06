@@ -31,13 +31,13 @@ class TestArray(TestCase):
         left = 0
         right = len(ints) - 1
         first_number = 27
-        second_number = 11
+        second_number = 16
         self.assertEqual(4, search(ints, left, right, first_number))
-        self.assertEqual(0, search(ints, left, right, second_number))
+        self.assertEqual(1, search(ints, left, right, second_number))
         for _ in range(3):
             ints.append(ints.pop(0))
         self.assertEqual(1, search(ints, left, right, first_number))
-        self.assertEqual(6, search(ints, left, right, second_number))
+        self.assertEqual(7, search(ints, left, right, second_number))
 
     def test_sort_strings_by_anagram(self):
         strings = [
