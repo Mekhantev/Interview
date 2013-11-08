@@ -110,11 +110,11 @@ class TestRankTreeManager(TestCase):
         ints = [10, 12, 5, 15, 7, 2, 1, 4, 3]
         for i in ints:
             manager.track(i)
-        self.assertEqual(1, manager.get_rank(4))
+        self.assertEqual(3, manager.get_rank(4))
 
     def test_get_rank(self):
         manager = RankTreeManager()
         ints = [10, 12, 5, 15, 7, 2, 1, 4, 3]
         for i in ints:
             manager.track(i)
-        self.assertEqual(1, manager.get_rank(4))
+        self.assertEqual(3, manager.get_rank(4))

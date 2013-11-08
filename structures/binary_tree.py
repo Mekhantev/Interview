@@ -187,11 +187,11 @@ class RankNode(TreeNode):
 
     def insert(self, number):
         if number < self.value:
+            self.left_size += 1
             if not self.left:
                 self.left = RankNode(number)
             else:
                 self.left.insert(number)
-            self.left_size += 1
         else:
             if not self.right:
                 self.right = RankNode(number)
@@ -204,7 +204,11 @@ class RankNode(TreeNode):
         elif number < self.value:
             return self.left.get_rank(number)
         else:
-            return self.right.get_rank(number)
+            right_rank = -1 if not self.right else self.right.get_rank(number)
+            if right_rank == -1:
+                return -1
+            else:
+                return self.left_size + 1 + right_rank
 
 
 class RankTreeManager():
