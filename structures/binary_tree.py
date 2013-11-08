@@ -178,3 +178,44 @@ def _find_path_by_sum(node: TreeNode, sum_value: int):
 
 _find_path_by_sum.result = None
 _find_path_by_sum.values = None
+
+
+class RankNode(TreeNode):
+    def __init__(self, value):
+        super().__init__(value)
+        self.left_size = 0
+
+    def insert(self, number):
+        if number < self.value:
+            if not self.left:
+                self.left = RankNode(number)
+            else:
+                self.left.insert(number)
+            self.left_size += 1
+        else:
+            if not self.right:
+                self.right = RankNode(number)
+            else:
+                self.right.insert(number)
+
+    def get_rank(self, number):
+        if number == self.value:
+            return self.left_size
+        elif number < self.value:
+            return self.left.get_rank(number)
+        else:
+            return self.right.get_rank(number)
+
+
+class RankTreeManager():
+    def __init__(self, root: RankNode=None):
+        self.root = root
+
+    def track(self, number: int):
+        if not self.root:
+            self.root = RankNode(number)
+        else:
+            self.root.insert(number)
+
+    def get_rank(self, number: int) -> int:
+        return self.root.get_rank(number)

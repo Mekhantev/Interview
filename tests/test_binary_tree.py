@@ -1,3 +1,4 @@
+from random import random
 from unittest import TestCase
 from structures.binary_tree import *
 
@@ -101,3 +102,19 @@ class TestBinaryTree(TestCase):
             root.right.left
         ]
         self.assertEqual(expected_result, result)
+
+
+class TestRankTreeManager(TestCase):
+    def test_track(self):
+        manager = RankTreeManager()
+        ints = [10, 12, 5, 15, 7, 2, 1, 4, 3]
+        for i in ints:
+            manager.track(i)
+        self.assertEqual(1, manager.get_rank(4))
+
+    def test_get_rank(self):
+        manager = RankTreeManager()
+        ints = [10, 12, 5, 15, 7, 2, 1, 4, 3]
+        for i in ints:
+            manager.track(i)
+        self.assertEqual(1, manager.get_rank(4))
