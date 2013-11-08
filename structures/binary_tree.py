@@ -204,11 +204,7 @@ class RankNode(TreeNode):
         elif number < self.value:
             return self.left.get_rank(number)
         else:
-            right_rank = -1 if not self.right else self.right.get_rank(number)
-            if right_rank == -1:
-                return -1
-            else:
-                return self.left_size + 1 + right_rank
+            return self.left_size + 1 + self.right.get_rank(number)
 
 
 class RankTreeManager():
