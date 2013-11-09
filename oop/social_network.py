@@ -1,17 +1,12 @@
-from collections.abc import Iterable
-
-
 class Person():
     @property
     def id(self):
         return self._id
 
-    def __init__(self, id_: int, name, friends: Iterable=None):
+    def __init__(self, id_: int, name):
         self._id = id_
         self._friends = []
         self.name = name
-        if friends:
-            self._friends.extend(friends)
 
     def add_friend(self, id_: int):
         self._friends.append(id_)
@@ -22,13 +17,9 @@ class Machine():
     def id(self):
         return self._id
 
-    def __init__(self, id_: int, persons: Iterable=None):
+    def __init__(self, id_: int):
         self._id = id_
         self._persons = {}
-        if not persons:
-            return
-        for person in persons:
-            self.add_person(person)
 
     def add_person(self, person: Person):
         self._persons[person.id] = person
@@ -59,14 +50,14 @@ class Server():
         self._machines[machine_id] = Machine(machine_id)
         self._machine_id += 1
 
-    def add_person(self, name, friends=None) -> Person:
+    def add_person(self, name) -> Person:
         person_id = self._person_id
-        person = Person(person_id, name, friends)
+        person = Person(person_id, name)
         machine = self._get_machine_with_min_persons()
         machine.add_person(person)
         self._person_to_machine[person_id] = machine.id
         self._person_id += 1
-        return Person
+        return person
 
     def count_users(self):
         return sum(kv[1].get_persons_number() for kv in self._machines.items())
