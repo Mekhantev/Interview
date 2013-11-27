@@ -74,3 +74,9 @@ class TestArray(TestCase):
         people = [(200, 120), (170, 62), (180, 75), (190, 112), (175, 55), (186, 80), (170, 60), (190, 110)]
         expected = [(170, 60), (170, 62), (175, 55), (180, 75), (186, 80), (190, 110), (190, 112), (200, 120)]
         self.assertEqual(expected, sort_by_height_width(people))
+
+    def test_quick_sort(self):
+        ints = [6, 9, 5, 2, 7, 1, 0, 3]
+        expected = sorted(ints)
+        quick_sort(ints, 0, len(ints) - 1)
+        self.assertEqual(expected, ints)

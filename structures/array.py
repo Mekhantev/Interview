@@ -1,3 +1,6 @@
+import random
+
+
 def binary_search(ints: 'Sorted linear collection',
                   i: int, left: int, right: int) -> int:
     pos = (left + right) // 2
@@ -91,3 +94,25 @@ def search_string(strings: list, left, right, s) -> int:
 def sort_by_height_width(people):
     sorted_people = sorted(people, key=lambda h: (h[0], h[1]))
     return sorted_people
+
+
+def quick_sort(ints, left, right):
+    def partition(ints, left, right, pivot_index):
+        pivot = ints[pivot_index]
+        ints[right], ints[pivot_index] = ints[pivot_index], ints[right]
+
+        new_pivot_index = left
+        for i in range(left, right):
+            if ints[i] < pivot:
+                ints[i], ints[new_pivot_index] = ints[new_pivot_index], ints[i]
+                new_pivot_index += 1
+
+        ints[new_pivot_index], ints[right] = ints[right], ints[new_pivot_index]
+        return new_pivot_index
+
+    if left < right:
+        pivot_index = random.randint(left, right)
+        pivot_index = partition(ints, left, right, pivot_index)
+        quick_sort(ints, left, pivot_index - 1)
+        quick_sort(ints, pivot_index + 1, right)
+    return
