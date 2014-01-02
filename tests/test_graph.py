@@ -6,11 +6,11 @@ class TestGraph(TestCase):
     def test_search(self):
         node = GraphNode()
         start = node
-        node.links.extend((GraphNode(), GraphNode(), GraphNode()))
-        node.links[0].links.extend((GraphNode(), GraphNode()))
-        node.links[1].links.extend((GraphNode(), GraphNode(), GraphNode()))
-        node.links[2].links.extend((GraphNode(), GraphNode()))
+        node.links += (GraphNode(), GraphNode(), GraphNode())
+        node.links[0].links += (GraphNode(), GraphNode())
+        node.links[1].links += (GraphNode(), GraphNode(), GraphNode())
+        node.links[2].links += (GraphNode(), GraphNode())
         node = node.links[2]
-        node.links.extend((GraphNode(), GraphNode()))
+        node.links += (GraphNode(), GraphNode())
         self.assertTrue(search(start, node.links[1]))
         self.assertFalse(search(start, GraphNode()))

@@ -39,7 +39,7 @@ class FlatEdge(Edge):
 class Piece(metaclass=ABCMeta):
     def __init__(self, edges: Iterable):
         self.edges = []
-        self.edges.extend(edges)
+        self.edges += edges
 
 
 class CornerPiece(Piece):

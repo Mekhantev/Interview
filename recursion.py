@@ -28,7 +28,7 @@ class Field():
     def __init__(self, i=5, nonfree_points: Iterable=None):
         self._matrix = []
         self._nonfree_points = []
-        self._nonfree_points.extend(nonfree_points)
+        self._nonfree_points += nonfree_points
         for _ in range(i):
             self._matrix.append([None for _ in range(i)])
 

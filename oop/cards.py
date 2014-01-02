@@ -40,7 +40,7 @@ class NoCardsError(Exception):
 class Deck(CardsHolder):
     def __init__(self, cards: Iterable):
         super().__init__()
-        self._cards.extend(cards)
+        self._cards += cards
 
     def deal_card(self):
         if self.remaining_cards() == 0:

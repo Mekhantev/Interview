@@ -6,7 +6,7 @@ class Storage(metaclass=ABCMeta):
     def __init__(self, artist: str, songs: Iterable):
         self.artist = artist
         self.songs = []
-        self.songs.extend(songs)
+        self.songs += songs
 
 
 class Cd(Storage):
