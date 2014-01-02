@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractproperty
+import time
 import os
-from utils import datetime_now_float
 
 
 class Entry(metaclass=ABCMeta):
@@ -17,7 +17,7 @@ class Entry(metaclass=ABCMeta):
     def __init__(self, name: str, parent=None):
         self.name = name
         self.parent = parent
-        self.creation_date = datetime_now_float()
+        self.creation_date = time.time()
         self.modification_date = self.creation_date
 
 
